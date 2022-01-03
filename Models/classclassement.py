@@ -1,4 +1,5 @@
-from Models.classjoueur import Joueur
+import operator
+
 
 class Classement:
 
@@ -6,5 +7,8 @@ class Classement:
         self.players_ranking = players_ranking
 
     def initialranking(self, players_list):
-        for Joueur in players_list:
+        self.players_ranking = sorted(players_list, key=operator.itemgetter(5))
+        return self.players_ranking
+
+
 
