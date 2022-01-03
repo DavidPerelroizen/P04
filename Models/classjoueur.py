@@ -7,3 +7,6 @@ class Joueur:
         self.gender = gender
         self.rank = rank
 
+    def updaterank(self, new_rank):
+        """This function unables the update of a player's rank anytime"""
+        self.rank = new_rank
