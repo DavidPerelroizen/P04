@@ -1,4 +1,8 @@
 def generatepairs(players_ranking, rounds_list, round_number):
+    """
+    This function will generate pairs of players for a given round number
+    It will return a list of tuples
+    """
     new_pairs_list = []
     if round_number == 1:
         new_pairs_list = [
@@ -18,6 +22,7 @@ def generatepairs(players_ranking, rounds_list, round_number):
             elif [players_ranking[i], players_ranking[j]] \
                     or [players_ranking[j], players_ranking[i]] not in rounds_list[k]:
                 new_pairs_list.append((players_ranking[i], players_ranking[j]))
+                #  The "if" block below prevents a player to play against himself
                 if i == j - 1:
                     i += 2
                 else:
