@@ -1,11 +1,26 @@
 from Models.classtournoi import Tournoi
 from Models.constants import time_controllers
+from Models.classjoueur import Joueur
+from Models.classmatch import Match
+from Models.classtour import Tour
+from Models.classclassement import Classement
 
-liste_joueurs = ['J1', "J2", "J3"]
+players_list = [
+    ['Joueur1', 'self.last_name1', 'self.first_name1', '01/01/2000', 'M', 4],
+    ['Joueur2', 'self.last_name2', 'self.first_name2', '01/01/2001', 'M', 2],
+    ['Joueur3', 'self.last_name3', 'self.first_name3', '01/01/2002', 'M', 1],
+    ['Joueur4', 'self.last_name4', 'self.first_name4', '01/01/2003', 'M', 3]
+]
 
-tournoi1 = Tournoi('Tournoi du siècle', 'Dijon', '01/01/2022', ["des", "tours"], time_controllers[2], [])
+classement1 = Classement([])
+print(classement1.initialranking(players_list))
 
-for i in liste_joueurs:
-    tournoi1.addplayer(i)
-    tournoi1.displayplayerslist()
+
+
+
+
+
+
+
+
 
