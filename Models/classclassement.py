@@ -1,5 +1,3 @@
-import operator
-
 
 class Classement:
 
@@ -8,7 +6,7 @@ class Classement:
 
     def ranking(self, players_list):
         """This function sorts the players list according to their score and then according to their rank"""
-        self.players_ranking = sorted(players_list, key=operator.itemgetter(6, 5))
+        self.players_ranking = sorted(players_list, key=lambda x:  (-x[6], x[5]))
         return self.players_ranking
 
 
