@@ -3,7 +3,7 @@ import datetime
 
 class Tour:
 
-    def __init__(self, round_name, date_time_begin, date_time_finish, matches_list):
+    def __init__(self, round_name, date_time_begin=0, date_time_finish=0, matches_list=[]):
         self.round_name = round_name
         self.date_time_begin = date_time_begin
         self.date_time_finish = date_time_finish
