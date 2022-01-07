@@ -22,7 +22,8 @@ def roundmanager(round_index, pairs_list):
     if enter_result == 'Yes':
         for tuple in round_generated.matches_list:
             match = Match(tuple)
-            code_result = int(input(f'Enter code result {match.paire_joueurs}: '))
+            print('Result codes: 0 = pat, 1 = player 1 wins, 2 = player 2 wins')
+            code_result = int(input(f'Enter code result {match.paire_joueurs[0][0]} vs {match.paire_joueurs[1][0]} : '))
             round_match_list.append(match.resultmatch(code_result))
 
     round_generated.finishround()
