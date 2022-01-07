@@ -27,9 +27,7 @@ def roundmanager(round_index, pairs_list):
 
     round_generated.finishround()
 
-    return print('Début du round', round_generated.date_time_begin,
-                 round_match_list,
-                 'Fin du round', round_generated.date_time_finish)
+    return round_match_list
 
 
 
