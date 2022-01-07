@@ -1,3 +1,5 @@
+from Models.classtour import Tour
+
 class View:
 
     def displaymainmenu(self):
@@ -12,26 +14,6 @@ class View:
         ----------------------------------
         1. Tournament manager --> press T
         2. Reports --> press R
-        ----------------------------------""")
-        user_choice = input('        Press the appropriate key + ENTER : ')
-
-        return user_choice
-
-    def displaytournamentmenu(self):
-        """
-        Displays the first secondary menue
-        Application: Tournament management
-        """
-        print(
-            """
-                CHESS APPLICATOR
-        ----------------------------------
-                TOURNAMENT MENU
-        ----------------------------------
-        1. Create tournament --> press C
-        2. Add players --> press A
-        3. Start tournament --> press S
-        4. Update rankings --> press U        
         ----------------------------------""")
         user_choice = input('        Press the appropriate key + ENTER : ')
 
@@ -57,3 +39,6 @@ class View:
         user_choice = input('        Press the appropriate key + ENTER : ')
 
         return user_choice
+
+    def displayroundresult(self, i):
+        print('Round ', {i}, ' is finished')
