@@ -1,7 +1,7 @@
 
 class Classement:
 
-    def __init__(self, players_ranking):
+    def __init__(self, players_ranking=[]):
         self.players_ranking = players_ranking
 
     def ranking(self, players_list):
