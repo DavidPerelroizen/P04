@@ -41,4 +41,4 @@ class View:
         return user_choice
 
     def displayroundresult(self, i):
-        print('Round ', {i}, ' is finished')
+        print('Round ', i, ' is finished')

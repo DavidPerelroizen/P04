@@ -14,33 +14,29 @@ def main():
         """Tournament management"""
         #  Tournament creation
         tournoi = tournoicreation()
+        print("")
         #  Players creation
         players_number = int(input('How many players do you want to add?: '))
         tournoi.players_list = gettheplayers(players_number)
-        print("""
-        
-        """)
+        print("")
         #  Launch the rounds
         rounds_number = int(input('How many rounds do you want to play?: '))
-        print("""
-
-        """)
-        for i in range(rounds_number):
-            players_ranking = Classement()
-            players_ranking.ranking(tournoi.players_list)
-            pairs_list = generatepairs(players_ranking, tournoi.rounds_list, i)
+        print("")
+        classement = Classement()
+        rounds_pairs_list = []
+        for i in range(1, rounds_number + 1):
+            players_ranking = classement.ranking(tournoi.players_list)
+            pairs_list = generatepairs(players_ranking, rounds_pairs_list, i, players_number)
             round_match_list = roundmanager(i, pairs_list)
             tournoi.rounds_list.append(round_match_list)
+            rounds_pairs_list.append(pairs_list)
             view.displayroundresult(i)
-            print("""
-
-            """)
-
+            print("")
 
     else:
         """Reporting management"""
         view.displayreportingmenu()
 
+
 if __name__ == '__main__':
     main()
-

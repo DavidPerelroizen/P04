@@ -21,11 +21,15 @@ class Match:
         elif code_result == codes_results[1]:
             self.paire_joueurs[0][6] += match_points['Victory']
             self.paire_joueurs[1][6] += match_points['Defeat']
+
             return [self.paire_joueurs[0][0], match_points['Victory']], \
                    [self.paire_joueurs[1][0], match_points['Defeat']]
 
         else:
             self.paire_joueurs[0][6] += match_points['Defeat']
             self.paire_joueurs[1][6] += match_points['Victory']
+
             return [self.paire_joueurs[0][0], match_points['Defeat']], \
                    [self.paire_joueurs[1][0], match_points['Victory']]
+
+
