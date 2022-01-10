@@ -16,7 +16,7 @@ class View:
         2. Reports --> press R
         3. Exit program --> press X
         ----------------------------------""")
-        user_choice = input('        Press the appropriate key + ENTER : ')
+        user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
         return user_choice
 
