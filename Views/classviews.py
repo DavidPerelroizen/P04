@@ -47,3 +47,9 @@ class View:
     def proposerankingupdate(self):
         user_choice = input('Do you want to update the players ranking? (Yes/No)').upper()
         return user_choice
+
+    def displayallplayerslist(self):
+        pass
+
+    def displaytournamentplayers(self, tournament_name):
+        pass
