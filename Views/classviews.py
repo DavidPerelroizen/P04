@@ -44,11 +44,16 @@ class View:
 
         return user_choice
 
-    def displayroundresult(self, i):
+    def displayroundresult(self, i, round_to_display):
         print('Round ', i, ' is finished')
+        print(f'Round start time: {round_to_display.date_time_begin}')
+        print(f'Round end time: {round_to_display.date_time_finish}')
+        print('Matches list: ')
+        for match in round_to_display.matches_list:
+            print(match)
 
     def proposerankingupdate(self):
-        user_choice = input('Do you want to update the players ranking? (Yes/No)').upper()
+        user_choice = input('Do you want to update the players ranking? (Yes/No): ').upper()
         return user_choice
 
     def displayallplayerslist(self, tournaments_list):
