@@ -4,6 +4,7 @@ from Controllers.playersmanager import gettheplayers
 from Controllers.generatepairs import generatepairs
 from Models.classclassement import Classement
 from Controllers.roundmanager import roundmanager
+from Models.classjoueur import Joueur
 
 
 def main():
@@ -33,9 +34,26 @@ def main():
             view.displayroundresult(i)
             print("")
 
-    else:
+        #  Update rankings
+        user_choice_for_update = view.proposerankingupdate()
+        if user_choice_for_update == 'Yes':
+            for player in tournoi.players_list:
+                joueur = Joueur(player[0], player[1], player[2], player[3], player[4], player[5], player[6])
+                updated_rank = int(input(f'Enter the new rank for {joueur.player_index} (Integer between 1 and 8): '))
+                joueur.updaterank(updated_rank)
+            print("End of the game")
+            main()
+
+        else:
+            print("End of the game")
+            main()
+
+    elif user_choice == 'R':
         """Reporting management"""
         view.displayreportingmenu()
+
+    else:
+        exit()
 
 
 if __name__ == '__main__':
