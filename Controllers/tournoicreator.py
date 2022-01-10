@@ -15,7 +15,7 @@ def tournoicreation():
     tournoi_description = input('Enter the tournament description : ')
     tournoi_time_controller = ''
     while tournoi_time_controller not in time_controllers:
-        tournoi_time_controller = input('Enter a time controller (blitz, coup rapide, bullet) : ')
+        tournoi_time_controller = input('Enter a time controller (blitz, coup rapide, bullet) : ').lower()
 
     tournoi = Tournoi(tournoi_name, tournoi_place, tournoi_date, [], tournoi_description, tournoi_time_controller)
 
