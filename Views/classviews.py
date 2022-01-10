@@ -52,28 +52,56 @@ class View:
         return user_choice
 
     def displayallplayerslist(self, tournaments_list):
-        user_choice = input('Alphabetical or ranking display?: ').upper()
-        if user_choice == 'ALPHABETICAL':
-            print(f"Display all players list in alphabetical order")
-            reporting_list = []
-            for tournament in tournaments_list:
-                for player in tournament.players_list:
-                    reporting_list.append(player)
-            reporting_list.sort(key=lambda x: x[1])
-            for item in reporting_list:
-                print(item)
+        user_choice = ''
+        while user_choice not in ['ALPHABETICAL', 'RANKING']:
+            user_choice = input('Alphabetical or ranking display?: ').upper()
+            if user_choice == 'ALPHABETICAL':
+                print(f"Display all players list in alphabetical order")
+                reporting_list = []
+                for tournament in tournaments_list:
+                    for player in tournament.players_list:
+                        reporting_list.append(player)
+                reporting_list.sort(key=lambda x: x[1])
+                for item in reporting_list:
+                    print(item)
 
-        else:
-            print(f"Display all players list in ranking order")
-            reporting_list = []
-            for tournament in tournaments_list:
-                for player in tournament.players_list:
-                    reporting_list.append(player)
-            reporting_list_sorted = sorted(reporting_list, key=lambda x: x[5])
-            for item in reporting_list_sorted:
-                print(item)
+            elif user_choice == 'RANKING':
+                print(f"Display all players list in ranking order")
+                reporting_list = []
+                for tournament in tournaments_list:
+                    for player in tournament.players_list:
+                        reporting_list.append(player)
+                reporting_list.sort(key=lambda x: x[5])
+                for item in reporting_list:
+                    print(item)
+
+            else:
+                print('Wrong value, try again!')
 
     def displaytournamentplayers(self, tournament):
-        print(f"Display {tournament.name} players list")
-        for player in tournament.players_list:
-            print(player)
+        user_choice = ''
+        while user_choice not in ['ALPHABETICAL', 'RANKING']:
+            user_choice = input('Alphabetical or ranking display?: ').upper()
+            if user_choice == 'ALPHABETICAL':
+                print(f"Display {tournament.name} players list in alphabetical order")
+                reporting_list =[]
+                for player in tournament.players_list:
+                    reporting_list.append(player)
+                reporting_list.sort(key=lambda x: x[1])
+                for item in reporting_list:
+                    print(item)
+
+            elif user_choice == 'RANKING':
+                print(f"Display {tournament.name} players list in ranking order")
+                reporting_list = []
+                for player in tournament.players_list:
+                    reporting_list.append(player)
+                reporting_list.sort(key=lambda x: x[5])
+                for item in reporting_list:
+                    print(item)
+
+            else:
+                print('Wrong value, try again')
+
+
+
