@@ -115,7 +115,14 @@ class View:
 
     def displaytournamentallrounds(self, tournament):
         for rounds in tournament.rounds_list:
-            print(rounds)
+            print("-----------------------------------------------")
+            print(rounds.name)
+            print(f'Round start time: {rounds.date_time_begin}')
+            print(f'Round end time: {rounds.date_time_finish}')
+            print('Matches list: ')
+            for match in rounds.matches_list:
+                print(match)
+            print("-----------------------------------------------")
 
 
 
