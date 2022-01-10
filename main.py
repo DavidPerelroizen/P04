@@ -29,10 +29,11 @@ def main():
         for i in range(1, rounds_number + 1):
             players_ranking = classement.ranking(tournoi.players_list)
             pairs_list = generatepairs(players_ranking, rounds_pairs_list, i, players_number)
-            round_match_list = roundmanager(i, pairs_list)
-            tournoi.rounds_list.append(round_match_list)
+            round_information = roundmanager(i, pairs_list)
+            tournoi.rounds_list.append(round_information)
             rounds_pairs_list.append(pairs_list)
-            view.displayroundresult(i)
+            print("")
+            view.displayroundresult(i, round_information)
             print("")
 
         #  Update rankings
