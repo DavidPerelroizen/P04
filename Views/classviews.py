@@ -14,6 +14,7 @@ class View:
         ----------------------------------
         1. Tournament manager --> press T
         2. Reports --> press R
+        3. Exit program --> press X
         ----------------------------------""")
         user_choice = input('        Press the appropriate key + ENTER : ')
 
@@ -42,3 +43,7 @@ class View:
 
     def displayroundresult(self, i):
         print('Round ', i, ' is finished')
+
+    def proposerankingupdate(self):
+        user_choice = input('Do you want to update the players ranking? (Yes/No)')
+        return user_choice
