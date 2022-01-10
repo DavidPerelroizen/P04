@@ -6,4 +6,6 @@ codes_results = [0, 1, 2]
 
 match_points = {'Pat': 0.5, 'Victory': 1, 'Defeat': 0}
 
-gender_list = ('Man', 'Woman')
+gender_list = ['man', 'woman']
+
+yes_list = ['Yes', 'YES', 'yes', 'yES']
