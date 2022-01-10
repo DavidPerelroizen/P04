@@ -1,6 +1,6 @@
 from Models.classtour import Tour
 from Models.classmatch import Match
-from Models.constants import codes_results
+from Models.constants import codes_results, yes_list
 
 
 def roundmanager(round_index, pairs_list):
@@ -16,9 +16,9 @@ def roundmanager(round_index, pairs_list):
 
     enter_result = 'No'
     while enter_result == 'No':
-        enter_result = input('Do you want to enter the results? (Yes/No) : ')
+        enter_result = input('Do you want to enter the results? (Yes/No) : ').lower()
 
-    if enter_result == 'Yes':
+    if enter_result in yes_list:
         for game in round_generated.matches_list:
             match = Match(game)
             print('Result codes: 0 = pat, 1 = player 1 wins, 2 = player 2 wins')
@@ -29,6 +29,7 @@ def roundmanager(round_index, pairs_list):
                 )
                 round_match_list.append(match.resultmatch(code_result))
 
+    round_generated.matches_list = round_match_list
     round_generated.finishround()
 
-    return round_match_list
+    return round_generated
