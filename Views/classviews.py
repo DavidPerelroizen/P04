@@ -103,5 +103,10 @@ class View:
             else:
                 print('Wrong value, try again')
 
+    def displayalltournaments(self, tournament_list):
+        for tournament in tournament_list:
+            print(f'{tournament.name} in {tournament.place} on {tournament.date_list}, was played with a '
+                  f'{tournament.time_controller} time controller')
+
 
 
