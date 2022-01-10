@@ -37,7 +37,7 @@ class View:
         4. Tournament all rounds list --> press R
         5. Tournament all matches list --> press M        
         --------------------------------------------""")
-        user_choice = input('        Press the appropriate key + ENTER : ')
+        user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
         return user_choice
 
@@ -45,5 +45,5 @@ class View:
         print('Round ', i, ' is finished')
 
     def proposerankingupdate(self):
-        user_choice = input('Do you want to update the players ranking? (Yes/No)')
+        user_choice = input('Do you want to update the players ranking? (Yes/No)').upper()
         return user_choice
