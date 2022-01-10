@@ -10,12 +10,15 @@ def gettheplayers(players_number):
 
         player_index = "Player" + str(i)
         print('Prepare to fill in information for ', player_index)
-        player_last_name = input('Enter the player last name : ')
-        player_first_name = input('Enter the player first name : ')
+        player_last_name = input('Enter the player last name : ').upper()
+        player_first_name = input('Enter the player first name : ').lower()
         player_birth_date = input('Enter the player birth date (JJ/MM/AAAA) : ')
         player_gender = ''
         while player_gender not in gender_list:
-            player_gender = input(f'Enter the player gender {gender_list} : ')
+            try:
+                player_gender = input(f'Enter the player gender {gender_list} : ').lower()
+            except ValueError:
+                print('Please enter a valid gender')
         player_rank = 0
         while player_rank not in range(1, players_number + 1, 1):
             try:
