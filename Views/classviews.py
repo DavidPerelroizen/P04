@@ -124,5 +124,15 @@ class View:
                 print(match)
             print("-----------------------------------------------")
 
+    def displaytournamenetallmatches(self, tournament):
+        match_list = []
+        for rounds in tournament.rounds_list:
+            for match in rounds.matches_list:
+                match_list.append(match)
+        print(f'{tournament.name} matches list')
+        for item in match_list:
+            print(item)
+
+
 
 
