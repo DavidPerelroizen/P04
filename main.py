@@ -51,7 +51,12 @@ def main():
 
     elif user_choice == 'R':
         """Reporting management"""
-        view.displayreportingmenu()
+        user_choice = view.displayreportingmenu()
+        if user_choice == "A":
+            pass
+
+        elif user_choice == "P":
+            pass
 
     else:
         exit()
