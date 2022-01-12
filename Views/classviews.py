@@ -1,6 +1,6 @@
 from Models.classtour import Tour
 from Models.classtournoi import Tournoi
-from Models.constants import reporting_menu_list, main_menu_list
+from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict
 
 
 class View:
@@ -62,7 +62,9 @@ class View:
     def proposerankingupdate(self):
         """Function to propose a ranking update"""
 
-        user_choice = input('Do you want to update the players ranking? (Yes/No): ').upper()
+        user_choice = 'No'
+        while user_choice not in yes_list:
+            user_choice = input('Do you want to update the players ranking? (Yes/No): ').upper()
         return user_choice
 
     def displayallplayerslist(self, tournaments_list):
@@ -71,7 +73,13 @@ class View:
         user_choice = ''
 
         while user_choice not in ['ALPHABETICAL', 'RANKING']:
-            user_choice = input('Alphabetical or ranking display?: ').upper()
+            try:
+                user_choice = reporting_ordering_dict[int(input(
+                    'Alphabetical (press 1) or ranking display (press 2)?: '))]
+            except ValueError:
+                print('Please enter a valid key')
+            except KeyError:
+                print('Please enter a valid key')
 
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
@@ -103,7 +111,13 @@ class View:
 
         user_choice = ''
         while user_choice not in ['ALPHABETICAL', 'RANKING']:
-            user_choice = input('Alphabetical or ranking display?: ').upper()
+            try:
+                user_choice = reporting_ordering_dict[int(input(
+                    'Alphabetical (press 1) or ranking display (press 2)?: '))]
+            except ValueError:
+                print('Please enter a valid key')
+            except KeyError:
+                print('Please enter a valid key')
 
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
