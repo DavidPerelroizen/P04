@@ -22,8 +22,3 @@ def tournoicreation():
     tournoi = Tournoi(tournoi_name, tournoi_place, tournoi_date, [], tournoi_description, tournoi_time_controller)
 
     return tournoi
-
-
-
-
-
