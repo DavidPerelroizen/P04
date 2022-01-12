@@ -1,5 +1,6 @@
 from Models.classtour import Tour
 from Models.classtournoi import Tournoi
+from Models.constants import reporting_menue_list
 
 
 class View:
@@ -12,7 +13,7 @@ class View:
             """
             CHESS APPLICATOR
         ----------------------------------
-                MAIN MENUE
+                MAIN MENU
         ----------------------------------
         1. Tournament manager --> press T
         2. Reports --> press R
@@ -31,7 +32,7 @@ class View:
             """
                     CHESS APPLICATOR
         --------------------------------------------
-                     REPORTING MENUE
+                     REPORTING MENU
         --------------------------------------------
         1. All players list --> press A
         2. Players of a tournament list --> press P
@@ -40,7 +41,9 @@ class View:
         5. Tournament all matches list --> press M 
         6. Back to main menue --> press B   
         --------------------------------------------""")
-        user_choice = input('        Press the appropriate key + ENTER : ').upper()
+        user_choice = ''
+        while user_choice not in reporting_menue_list:
+            user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
         return user_choice
 
