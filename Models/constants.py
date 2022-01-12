@@ -15,3 +15,5 @@ reporting_menu_list = ['A', 'P', 'T', 'R', 'M', 'B']
 main_menu_list = ['T', 'R', 'X']
 
 time_controllers_dict = {1: 'bullet', 2: 'coup rapide', 3: 'blitz'}
+
+reporting_ordering_dict = {1: 'ALPHABETICAL', 2: 'RANKING'}
