@@ -1,5 +1,6 @@
 from Models.classjoueur import Joueur
-from Models.constants import gender_list
+from Models.constants import gender_dict
+
 
 def gettheplayers(players_number):
 
@@ -19,10 +20,12 @@ def gettheplayers(players_number):
             except ValueError:
                 print("Please enter a valid birth date")
         player_gender = ''
-        while player_gender not in gender_list:
+        while player_gender == '':
             try:
-                player_gender = input(f'Enter the player gender {gender_list} : ').lower()
-            except ValueError:
+                player_gender = gender_dict[int(input(
+                    f'Enter the player gender (Man --> press 1, Woman--> press 2) : ')
+                )]
+            except KeyError:
                 print('Please enter a valid gender')
         player_rank = 0
         while player_rank not in range(1, players_number + 1, 1):
@@ -42,5 +45,3 @@ def gettheplayers(players_number):
         players_list.append(player)
 
     return players_list
-
-
