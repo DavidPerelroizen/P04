@@ -4,6 +4,11 @@ from Models.constants import codes_results, yes_list
 
 
 def roundmanager(round_index, pairs_list):
+    """
+    For a given index and a given list of pairs of players, this function will instantiate a round,
+    create matches and then allow the user to input the match result.
+    Information about the round start and end time, and the list of match/results will be stored in the round instance.
+    """
 
     round_match_list = []
     round_name = 'Round ' + str(round_index)
@@ -12,7 +17,7 @@ def roundmanager(round_index, pairs_list):
     round_generated.initiateround()
 
     for pair in pairs_list:
-        round_generated.addmatch(pair)
+        round_generated.addmatch(pair)  # Transforms a players pair into a match instance in the round match list
 
     enter_result = 'No'
     while enter_result not in yes_list:
@@ -27,9 +32,10 @@ def roundmanager(round_index, pairs_list):
                 code_result = int(
                     input(f'Enter code result {match.paire_joueurs[0][0]} vs {match.paire_joueurs[1][0]} : ')
                 )
-                round_match_list.append(match.resultmatch(code_result))
+                round_match_list.append(match.resultmatch(code_result))  # Appends to the match list of the round a \
+                # tuple containing two lists. Each contains the player instance and the score earned
 
-    round_generated.matches_list = round_match_list
+    round_generated.matches_list = round_match_list  # Round instance receives the matches with player info and score
     round_generated.finishround()
 
     return round_generated
