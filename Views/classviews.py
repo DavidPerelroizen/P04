@@ -1,6 +1,6 @@
 from Models.classtour import Tour
 from Models.classtournoi import Tournoi
-from Models.constants import reporting_menu_list
+from Models.constants import reporting_menu_list, main_menu_list
 
 
 class View:
@@ -19,7 +19,9 @@ class View:
         2. Reports --> press R
         3. Exit program --> press X
         ----------------------------------""")
-        user_choice = input('        Press the appropriate key + ENTER : ').upper()
+        user_choice = ''
+        while user_choice not in main_menu_list:
+            user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
         return user_choice
 
