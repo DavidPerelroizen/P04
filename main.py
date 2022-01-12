@@ -35,11 +35,19 @@ def main():
         classement = Classement()
         rounds_pairs_list = []
         for i in range(1, rounds_number + 1):
-            players_ranking = classement.ranking(tournoi.players_list)
-            pairs_list = generatepairs(players_ranking, rounds_pairs_list, i, players_number)
-            round_information = roundmanager(i, pairs_list)
-            tournoi.rounds_list.append(round_information)
-            rounds_pairs_list.append(pairs_list)
+            """
+            For each round, the program will follow the below steps:
+            1. Refresh the ranking
+            2. Generate a new set of pairs
+            3. Play the round
+            4. Add the round info to the tournoi
+            5. Add the round pairs list to the instance of the round
+            """
+            players_ranking = classement.ranking(tournoi.players_list)  # Step 1
+            pairs_list = generatepairs(players_ranking, rounds_pairs_list, i, players_number)  # Step2
+            round_information = roundmanager(i, pairs_list)  # Step 3
+            tournoi.rounds_list.append(round_information)  # Step 4
+            rounds_pairs_list.append(pairs_list)  # Step 5
             print("")
             view.displayroundresult(i, round_information)
             print("")
@@ -61,6 +69,7 @@ def main():
     elif user_choice == 'R':
         """Reporting management"""
         user_choice = view.displayreportingmenu()
+
         if user_choice == "A":
             pass
 
