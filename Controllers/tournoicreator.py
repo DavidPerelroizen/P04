@@ -4,6 +4,7 @@ from Models.constants import time_controllers_dict
 
 def tournoicreation():
     """This function initializes the creation of a tournament"""
+
     tournoi_name = input('Enter the tournament name : ')
     tournoi_place = input('Enter the tournament location : ')
     tournoi_date = ''

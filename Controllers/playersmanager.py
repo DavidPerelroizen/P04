@@ -7,6 +7,7 @@ def gettheplayers(players_number):
     players_list = []
 
     for i in range(1, players_number+1):
+        """For each player the code will request information that will help to instantiate the players objects"""
         print("")
 
         player_index = "Player " + str(i)
