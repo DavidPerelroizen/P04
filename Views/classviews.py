@@ -50,6 +50,8 @@ class View:
         return user_choice
 
     def displayroundresult(self, i, round_to_display):
+        """This function summarizes the information about a specific round"""
+
         print('Round ', i, ' is finished')
         print(f'Round start time: {round_to_display.date_time_begin}')
         print(f'Round end time: {round_to_display.date_time_finish}')
@@ -58,13 +60,20 @@ class View:
             print(match)
 
     def proposerankingupdate(self):
+        """Function to propose a ranking update"""
+
         user_choice = input('Do you want to update the players ranking? (Yes/No): ').upper()
         return user_choice
 
     def displayallplayerslist(self, tournaments_list):
+        """Reporting function that will display all the players of all the tournaments in the database"""
+
         user_choice = ''
+
         while user_choice not in ['ALPHABETICAL', 'RANKING']:
             user_choice = input('Alphabetical or ranking display?: ').upper()
+
+            # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
                 print(f"Display all players list in alphabetical order")
                 reporting_list = []
@@ -75,6 +84,7 @@ class View:
                 for item in reporting_list:
                     print(item)
 
+            # List displayed by ranking order
             elif user_choice == 'RANKING':
                 print(f"Display all players list in ranking order")
                 reporting_list = []
@@ -89,9 +99,13 @@ class View:
                 print('Wrong value, try again!')
 
     def displaytournamentplayers(self, tournament):
+        """Reporting function that will display all the players of a specific tournament"""
+
         user_choice = ''
         while user_choice not in ['ALPHABETICAL', 'RANKING']:
             user_choice = input('Alphabetical or ranking display?: ').upper()
+
+            # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
                 print(f"Display {tournament.name} players list in alphabetical order")
                 reporting_list =[]
@@ -101,6 +115,7 @@ class View:
                 for item in reporting_list:
                     print(item)
 
+            # List displayed by ranking order
             elif user_choice == 'RANKING':
                 print(f"Display {tournament.name} players list in ranking order")
                 reporting_list = []
@@ -114,11 +129,15 @@ class View:
                 print('Wrong value, try again')
 
     def displayalltournaments(self, tournament_list):
+        """Reporting function that displays all the tournaments info from a list"""
+
         for tournament in tournament_list:
             print(f'{tournament.name} in {tournament.place} on {tournament.date_list}, was played with a '
                   f'{tournament.time_controller} time controller')
 
     def displaytournamentallrounds(self, tournament):
+        """Reporting function that displays all the rounds info from a specific tournament"""
+
         for rounds in tournament.rounds_list:
             print("-----------------------------------------------")
             print(rounds.name)
@@ -130,6 +149,8 @@ class View:
             print("-----------------------------------------------")
 
     def displaytournamenetallmatches(self, tournament):
+        """Reporting function that displays all the matches from a specific tournament"""
+
         match_list = []
         for rounds in tournament.rounds_list:
             for match in rounds.matches_list:
@@ -137,7 +158,3 @@ class View:
         print(f'{tournament.name} matches list')
         for item in match_list:
             print(item)
-
-
-
-
