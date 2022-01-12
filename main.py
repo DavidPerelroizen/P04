@@ -14,9 +14,11 @@ def main():
 
     if user_choice == 'T':
         """Tournament management"""
-        #  Tournament creation
+
+        #  Tournament initialization
         tournoi = tournoicreation()
         print("")
+
         #  Players creation
         players_number = 0
         while players_number % 2 != 0 or players_number == 0:
@@ -26,6 +28,7 @@ def main():
                 print('Please enter an even number of players')
         tournoi.players_list = gettheplayers(players_number)
         print("")
+
         #  Launch the rounds
         rounds_number = int(input('How many rounds do you want to play?: '))
         print("")
