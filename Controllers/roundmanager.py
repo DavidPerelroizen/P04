@@ -14,7 +14,8 @@ def roundmanager(round_index, pairs_list):
     round_name = 'Round ' + str(round_index)
 
     round_generated = Tour(round_name, 0, 0, [])
-    round_generated.initiateround()
+
+    round_generated.initiateround()  # Registers the start time of the round
 
     for pair in pairs_list:
         round_generated.addmatch(pair)  # Transforms a players pair into a match instance in the round match list
@@ -25,6 +26,7 @@ def roundmanager(round_index, pairs_list):
 
     if enter_result in yes_list:
         for game in round_generated.matches_list:
+            # Enables to input the result of each match from the match list
             match = Match(game)
             print('Result codes: 0 = pat, 1 = player 1 wins, 2 = player 2 wins')
             code_result = ''
@@ -36,6 +38,7 @@ def roundmanager(round_index, pairs_list):
                 # tuple containing two lists. Each contains the player instance and the score earned
 
     round_generated.matches_list = round_match_list  # Round instance receives the matches with player info and score
-    round_generated.finishround()
+
+    round_generated.finishround()  # Registers the end time of the round
 
     return round_generated
