@@ -11,3 +11,5 @@ gender_list = ['man', 'woman']
 yes_list = ['Yes', 'YES', 'yes', 'yES']
 
 reporting_menu_list = ['A', 'P', 'T', 'R', 'M', 'B']
+
+main_menu_list = ['T', 'R', 'X']
