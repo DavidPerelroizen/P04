@@ -9,3 +9,5 @@ match_points = {'Pat': 0.5, 'Victory': 1, 'Defeat': 0}
 gender_list = ['man', 'woman']
 
 yes_list = ['Yes', 'YES', 'yes', 'yES']
+
+reporting_menue_list = ['A', 'P', 'T', 'R', 'M', 'B']
