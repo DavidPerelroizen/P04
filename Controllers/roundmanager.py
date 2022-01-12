@@ -15,7 +15,7 @@ def roundmanager(round_index, pairs_list):
         round_generated.addmatch(pair)
 
     enter_result = 'No'
-    while enter_result == 'No':
+    while enter_result not in yes_list:
         enter_result = input('Do you want to enter the results? (Yes/No) : ').lower()
 
     if enter_result in yes_list:
