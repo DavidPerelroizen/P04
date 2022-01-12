@@ -1,6 +1,7 @@
 from Models.classjoueur import Joueur
 from Models.constants import gender_dict
 import datetime
+from Controllers.dbplayers import serializeplayer
 
 
 def gettheplayers(players_number):
@@ -43,6 +44,8 @@ def gettheplayers(players_number):
                 )]
             except KeyError:
                 print('Please enter a valid gender')
+            except ValueError:
+                print('Please enter a valid gender')
         player_rank = 0
         while player_rank not in range(1, players_number + 1, 1):
             try:
@@ -57,6 +60,10 @@ def gettheplayers(players_number):
             player_index, player_last_name, player_first_name, player_birth_date, player_gender, player_rank,
             player_score
         ]
+
+        # Use the player info to serialize it into tiny DB through function serializeplayer()
+        player_for_serializing = Joueur(player[0], player[1], player[2], player[3], player[4], player[5], player[6])
+        serializeplayer(player_for_serializing)
 
         players_list.append(player)
 
