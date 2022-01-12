@@ -18,6 +18,7 @@ class Joueur:
         return [self.player_index, self.last_name, self.first_name, self.birth_date, self.gender, self.rank, self.score]
 
     def addscore(self, match_result):
+        """This function updates the score attribute of the player instance depending on a match result"""
         for item in match_result:
             if item[0] == self.player_index:
                 self.score += item[1]

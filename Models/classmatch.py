@@ -9,7 +9,8 @@ class Match:
     def resultmatch(self, code_result):
         """
         This function returns the match result depending on the code_result provided
-        (0 = pat, 1 = player 1 wins, 2 = player 2 wins)
+        List of possible codes for results: 0 = pat, 1 = player 1 wins, 2 = player 2 wins
+        This list is stored in the constants module
         """
 
         if code_result == codes_results[0]:
