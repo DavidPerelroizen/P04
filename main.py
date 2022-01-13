@@ -7,6 +7,7 @@ from Controllers.roundmanager import roundmanager
 from Models.classjoueur import Joueur
 from Models.constants import yes_list
 from Controllers.allplayersrankingupdate import allplayersrankingupdate
+from Controllers.dbtournoi import serializetournoi
 
 
 def main():
@@ -31,7 +32,11 @@ def main():
         print("")
 
         #  Launch the rounds
-        rounds_number = int(input('How many rounds do you want to play?: '))
+        rounds_number = 0
+        while rounds_number > players_number - 1 or rounds_number == 0:
+            rounds_number = int(
+                input('How many rounds do you want to play? (max value = numbers of players - 1): ')
+            )
         print("")
         classement = Classement()
         rounds_pairs_list = []
@@ -57,10 +62,12 @@ def main():
         user_choice_for_update = view.proposerankingupdate()
         if user_choice_for_update in yes_list:
             allplayersrankingupdate(tournoi)
+            serializetournoi(tournoi)
             print("End of the game")
             main()
 
         else:
+            serializetournoi(tournoi)
             print("End of the game")
             main()
 
