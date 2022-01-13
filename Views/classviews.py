@@ -1,6 +1,6 @@
 from Models.classtour import Tour
 from Models.classtournoi import Tournoi
-from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict
+from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list
 
 
 class View:
@@ -63,7 +63,7 @@ class View:
         """Function to propose a ranking update"""
 
         user_choice = 'No'
-        while user_choice not in yes_list:
+        while user_choice not in yes_list or user_choice not in no_list:
             user_choice = input('Do you want to update the players ranking? (Yes/No): ').upper()
         return user_choice
 
