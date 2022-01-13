@@ -62,8 +62,8 @@ class View:
     def proposerankingupdate(self):
         """Function to propose a ranking update"""
 
-        user_choice = 'No'
-        while user_choice not in yes_list or user_choice not in no_list:
+        user_choice = ''
+        while user_choice not in yes_list and user_choice not in no_list:
             user_choice = input('Do you want to update the players ranking? (Yes/No): ').upper()
         return user_choice
 
