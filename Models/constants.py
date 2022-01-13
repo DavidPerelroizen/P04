@@ -10,6 +10,8 @@ gender_dict = {1: 'man', 2: 'woman'}
 
 yes_list = ['Yes', 'YES', 'yes', 'yES']
 
+no_list = ['No', 'NO', 'no', 'nO']
+
 reporting_menu_list = ['A', 'P', 'T', 'R', 'M', 'B']
 
 main_menu_list = ['T', 'R', 'X']
