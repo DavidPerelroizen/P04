@@ -6,6 +6,7 @@ from Models.classclassement import Classement
 from Controllers.roundmanager import roundmanager
 from Models.classjoueur import Joueur
 from Models.constants import yes_list
+from Controllers.allplayersrankingupdate import allplayersrankingupdate
 
 
 def main():
@@ -55,10 +56,7 @@ def main():
         #  Update rankings
         user_choice_for_update = view.proposerankingupdate()
         if user_choice_for_update in yes_list:
-            for player in tournoi.players_list:
-                joueur = Joueur(player[0], player[1], player[2], player[3], player[4], player[5], player[6])
-                updated_rank = int(input(f'Enter the new rank for {joueur.player_index} (Integer between 1 and 8): '))
-                joueur.updaterank(updated_rank)
+            allplayersrankingupdate(tournoi)
             print("End of the game")
             main()
 
