@@ -7,6 +7,7 @@ from Controllers.dbplayers import serializeplayer
 def gettheplayers(players_number):
 
     players_list = []
+    forbidden_ranks = []  # This list will be used to avoid two players to receive the same rank
 
     for i in range(1, players_number+1):
         """For each player the code will request information that will help to instantiate the players objects"""
@@ -47,11 +48,14 @@ def gettheplayers(players_number):
             except ValueError:
                 print('Please enter a valid gender')
         player_rank = 0
-        while player_rank not in range(1, players_number + 1, 1):
+        while player_rank not in range(1, players_number + 1, 1) or player_rank in forbidden_ranks:
             try:
                 player_rank = int(input(f'Enter the player rank (only integers from 1 to {players_number}) : '))
+                if player_rank in forbidden_ranks:
+                    print(f'Rank n° {player_rank} was already assigned to another player. Please enter another one.')
             except ValueError:
                 print('Integers only from 1 to ', players_number)
+        forbidden_ranks.append(player_rank)
         player_score = 0
 
         print("")
