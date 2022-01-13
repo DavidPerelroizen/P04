@@ -1,7 +1,6 @@
 import json
-from datetime import date, datetime
 from tinydb import TinyDB
-from Models.classjoueur import Joueur
+
 
 playersdb = TinyDB('db.json')
 playersdb.truncate()
