@@ -31,7 +31,7 @@ def gettheplayers(players_number):
             except ValueError:
                 print('Please enter a valid month (integer from 1 to 12)')
         player_birth_year = ''
-        while player_birth_year not in range(1900, 9999):
+        while player_birth_year not in range(1900, datetime.date.today().year):
             try:
                 player_birth_year = int(input('Enter the year (four digits integer): '))
             except ValueError:
