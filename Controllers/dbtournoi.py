@@ -1,5 +1,7 @@
 import json
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
+from Models.classtournoi import Tournoi
+from Controllers.dbplayers import deserializeplayersdicos
 
 
 db = TinyDB('db.json')
@@ -43,3 +45,20 @@ def serializetournoi(tournoi_for_serializing):
     }
 
     tournois_table.insert(tournoi_dict)
+
+
+def deserializetournoi():
+    """name, place, date_list, rounds_list, description, time_controller, players_list=[],
+            rounds_number"""
+    tournoi_name = input('Enter the tournament name: ')
+    Tournoi_search = Query()
+    tournoi_dict = tournois_table.search(Tournoi_search.name == tournoi_name)
+    tournoi_deserialized = ''
+
+    for element in tournoi_dict:
+        tournoi_deserialized = Tournoi(element['name'], element['place'], element['date_list'], element['rounds_list'],
+                                       element['description'], element['time_controller'],
+                                       deserializeplayersdicos(element['players_list']),
+                                       element['rounds_number'])
+
+    return tournoi_deserialized
