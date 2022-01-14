@@ -1,3 +1,5 @@
+from Controllers.dbplayers import updateplayersrank
+
 class Joueur:
 
     def __init__(self, player_index, last_name, first_name, birth_date, gender, rank, score=0):
@@ -12,6 +14,8 @@ class Joueur:
     def updaterank(self, new_rank):
         """This function enables the update of a player's rank anytime"""
         self.rank = new_rank
+        # The script below will update the player's rank in the players_table
+        updateplayersrank(self.player_index, new_rank)
 
     def getplayerinfos(self):
         """This function returns the player infos as a list"""
