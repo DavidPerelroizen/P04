@@ -2,6 +2,7 @@ from Models.classtour import Tour
 from Models.classtournoi import Tournoi
 from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list
 from Controllers.dbplayers import players_table, deserializeallplayers
+from Controllers.dbtournoi import deserializetournoi
 
 
 class View:
@@ -109,7 +110,7 @@ class View:
             else:
                 print('Wrong value, try again!')
 
-    def displaytournamentplayers(self, tournament):
+    def displaytournamentplayers(self):
         """Reporting function that will display all the players of a specific tournament"""
 
         user_choice = ''
@@ -122,10 +123,13 @@ class View:
             except KeyError:
                 print('Please enter a valid key')
 
+            # Deserialize the tournament
+            tournament = deserializetournoi()
+
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
                 print(f"Display {tournament.name} players list in alphabetical order")
-                reporting_list =[]
+                reporting_list = []
                 for player in tournament.players_list:
                     reporting_list.append(player)
                 reporting_list.sort(key=lambda x: x[1])
