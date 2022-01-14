@@ -6,8 +6,10 @@ from Models.classclassement import Classement
 from Controllers.roundmanager import roundmanager
 from Models.classjoueur import Joueur
 from Models.constants import yes_list
-from Controllers.allplayersrankingupdate import allplayersrankingupdate
+from Controllers.allplayersrankingupdate import allplayersrankingupdate, specificplayerrankingupdate
 from Controllers.dbtournoi import serializetournoi
+from Controllers.dbplayers import updateplayersrank, players_table
+from tinydb import TinyDB, Query
 
 
 def main():
@@ -82,6 +84,20 @@ def main():
 
         elif user_choice == "P":
             pass
+
+    elif user_choice == 'U':
+        print(
+            """
+            ------------------------
+               PLAYER RANK UPDATE
+            ------------------------
+            """
+        )
+        user_option = 'Yes'
+        while user_option in yes_list:
+            specificplayerrankingupdate()
+            user_option = input('Do you want to update another players rank? (Yes/No): ').upper()
+        main()
 
     else:
         exit()
