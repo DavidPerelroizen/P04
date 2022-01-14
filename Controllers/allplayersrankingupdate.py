@@ -1,5 +1,7 @@
 from Models.classjoueur import Joueur
 from Models.classtournoi import Tournoi
+from Controllers.dbplayers import players_table, updateplayersrank
+from tinydb import TinyDB, Query
 
 
 def allplayersrankingupdate(tournoi):
@@ -25,3 +27,25 @@ def allplayersrankingupdate(tournoi):
 
         forbidden_ranks.append(updated_rank)
         joueur.updaterank(updated_rank)
+
+def specificplayerrankingupdate():
+    """
+    This function will enable the user to update the rank of a specific player in the database
+    :return: none
+    """
+    player_index_for_update = input('Type the player index you are looking for: ')
+    Player_search = Query()
+    search_result = players_table.search(Player_search.player_index == player_index_for_update)
+    print(f'{player_index_for_update} current rank is ', {search_result[0]['rank']})
+
+    updated_rank = 0
+    while updated_rank not in range(1, 999):
+        try:
+            updated_rank = int(input('Enter the new rank: '))
+        except ValueError:
+            print('Please input only integers')
+
+    updateplayersrank(player_index_for_update, updated_rank)
+    print('Rank updated')
+
+
