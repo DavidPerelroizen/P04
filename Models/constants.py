@@ -8,9 +8,9 @@ match_points = {'Pat': 0.5, 'Victory': 1, 'Defeat': 0}
 
 gender_dict = {1: 'man', 2: 'woman'}
 
-yes_list = ['Yes', 'YES', 'yes', 'yES']
+yes_list = ['y', 'Y', 'Yes', 'YES', 'yes', 'yES']
 
-no_list = ['No', 'NO', 'no', 'nO']
+no_list = ['No', 'NO', 'no', 'nO', 'N', 'n']
 
 reporting_menu_list = ['A', 'P', 'T', 'R', 'M', 'B']
 
