@@ -1,5 +1,5 @@
 import json
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 
 db = TinyDB('db.json')
@@ -18,7 +18,10 @@ def serializeplayer(player_for_serializing):
     players_table.insert(player_dict)
 
 def deserializeallplayers():
-
+    """
+    This function aims at deserializing the all the players data from the players_table in order to use it
+     as lists in reporting
+    """
     deserialized_players_list = []
     deserialized_players = players_table.all()
 
@@ -30,3 +33,8 @@ def deserializeallplayers():
         deserialized_players_list.append(player_info_list)
 
     return deserialized_players_list
+
+def updateplayersscore(player_index_researched, score_update):
+    """Function that updates a given player's score depending on his index"""
+    Playerquery = Query()
+    players_table.update({'score': score_update}, Playerquery.player_index == player_index_researched)
