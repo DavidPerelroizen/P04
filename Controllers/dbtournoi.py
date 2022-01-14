@@ -1,8 +1,9 @@
 import json
 from tinydb import TinyDB
 
-tournoidb = TinyDB('db.json')
-tournoidb.truncate()
+
+db = TinyDB('db.json')
+tournois_table = db.table('tournois')
 
 
 def serializetournoi(tournoi_for_serializing):
@@ -41,4 +42,4 @@ def serializetournoi(tournoi_for_serializing):
         'rounds_number': tournoi_for_serializing.rounds_number
     }
 
-    tournoidb.insert(tournoi_dict)
+    tournois_table.insert(tournoi_dict)
