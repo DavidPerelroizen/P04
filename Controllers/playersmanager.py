@@ -13,7 +13,7 @@ def gettheplayers(tournoi_name, players_number):
         """For each player the code will request information that will help to instantiate the players objects"""
         print("")
 
-        player_index = tournoi_name + "_Player " + str(i)
+        player_index = tournoi_name + "_Player_" + str(i)
         print('Prepare to fill in information for ', player_index)
         player_last_name = input('Enter the player last name : ').upper()
         player_first_name = input('Enter the player first name : ').lower()
