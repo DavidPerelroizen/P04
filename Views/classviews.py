@@ -1,6 +1,7 @@
 from Models.classtour import Tour
 from Models.classtournoi import Tournoi
 from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list
+from Controllers.dbplayers import players_table, deserializeallplayers
 
 
 class View:
@@ -67,7 +68,7 @@ class View:
             user_choice = input('Do you want to update the players ranking? (Yes/No): ').upper()
         return user_choice
 
-    def displayallplayerslist(self, tournaments_list):
+    def displayallplayerslist(self):
         """Reporting function that will display all the players of all the tournaments in the database"""
 
         user_choice = ''
@@ -81,13 +82,15 @@ class View:
             except KeyError:
                 print('Please enter a valid key')
 
+            # Deserialize the database content
+            deserialized_players = deserializeallplayers()
+
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
                 print(f"Display all players list in alphabetical order")
                 reporting_list = []
-                for tournament in tournaments_list:
-                    for player in tournament.players_list:
-                        reporting_list.append(player)
+                for player_deserialized in deserialized_players:
+                    reporting_list.append(player_deserialized)
                 reporting_list.sort(key=lambda x: x[1])
                 for item in reporting_list:
                     print(item)
@@ -96,9 +99,8 @@ class View:
             elif user_choice == 'RANKING':
                 print(f"Display all players list in ranking order")
                 reporting_list = []
-                for tournament in tournaments_list:
-                    for player in tournament.players_list:
-                        reporting_list.append(player)
+                for player_deserialized in deserialized_players:
+                    reporting_list.append(player_deserialized)
                 reporting_list.sort(key=lambda x: x[5])
                 for item in reporting_list:
                     print(item)
