@@ -35,7 +35,7 @@ def main():
         rounds_number = 0
         while rounds_number > players_number - 1 or rounds_number == 0:
             rounds_number = int(
-                input('How many rounds do you want to play? (max value = numbers of players - 1): ')
+                input(f'How many rounds do you want to play? (max value = {players_number - 1}): ')
             )
         print("")
         classement = Classement()
