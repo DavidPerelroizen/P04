@@ -83,7 +83,9 @@ def main():
             main()
 
         elif user_choice == "P":
-            pass
+            view.displaytournamentplayers()
+            print('')
+            main()
 
     elif user_choice == 'U':
         print(
