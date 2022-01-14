@@ -2,9 +2,8 @@ import json
 from tinydb import TinyDB
 
 
-playersdb = TinyDB('db.json')
-playersdb.truncate()
-
+db = TinyDB('db.json')
+players_table = db.table('players')
 
 def serializeplayer(player_for_serializing):
     """This function aims at serializing a player (class = Joueur()) and insert is in the tiny DB"""
@@ -15,4 +14,19 @@ def serializeplayer(player_for_serializing):
         'gender': player_for_serializing.gender,
         'rank': player_for_serializing.rank, 'score': player_for_serializing.score
     }
-    playersdb.insert(player_dict)
+
+    players_table.insert(player_dict)
+
+def deserializeallplayers():
+
+    deserialized_players_list = []
+    deserialized_players = players_table.all()
+
+    for dico in deserialized_players:
+        player_info_list = [
+                            dico['player_index'], dico['last_name'], dico['first_name'], dico['birth_date'],
+                            dico['gender'], dico['rank'], dico['score']
+                            ]
+        deserialized_players_list.append(player_info_list)
+
+    return deserialized_players_list
