@@ -4,7 +4,7 @@ import datetime
 from Controllers.dbplayers import serializeplayer
 
 
-def gettheplayers(players_number):
+def gettheplayers(tournoi_name, players_number):
 
     players_list = []
     forbidden_ranks = []  # This list will be used to avoid two players to receive the same rank
@@ -13,7 +13,7 @@ def gettheplayers(players_number):
         """For each player the code will request information that will help to instantiate the players objects"""
         print("")
 
-        player_index = "Player " + str(i)
+        player_index = tournoi_name + "_Player " + str(i)
         print('Prepare to fill in information for ', player_index)
         player_last_name = input('Enter the player last name : ').upper()
         player_first_name = input('Enter the player first name : ').lower()
