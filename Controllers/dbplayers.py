@@ -34,6 +34,20 @@ def deserializeallplayers():
 
     return deserialized_players_list
 
+def deserializeplayersdicos(list_of_dicos):
+    """This function deserializes a list of dictionaries containing players instances"""
+    deserialized_players_list = []
+
+    for dico in list_of_dicos:
+        player_info_list = [
+            dico['player_index'], dico['last_name'], dico['first_name'], dico['birth_date'],
+            dico['gender'], dico['rank'], dico['score']
+        ]
+        deserialized_players_list.append(player_info_list)
+
+    return deserialized_players_list
+
+
 def updateplayersscore(player_index_researched, score_update):
     """Function that updates a given player's score depending on his index"""
     Playerquery = Query()
