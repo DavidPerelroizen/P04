@@ -38,3 +38,8 @@ def updateplayersscore(player_index_researched, score_update):
     """Function that updates a given player's score depending on his index"""
     Playerquery = Query()
     players_table.update({'score': score_update}, Playerquery.player_index == player_index_researched)
+
+def updateplayersrank(player_index_researched, rank_update):
+    """Function that updates a given player's rank depending on his index"""
+    Playerquery = Query()
+    players_table.update({'rank': rank_update}, Playerquery.player_index == player_index_researched)
