@@ -28,7 +28,7 @@ def main():
                 players_number = int(input('How many players do you want to add? (even numbers only): '))
             except ValueError:
                 print('Please enter an even number of players')
-        tournoi.players_list = gettheplayers(players_number)
+        tournoi.players_list = gettheplayers(tournoi.name, players_number)
         print("")
 
         #  Launch the rounds
