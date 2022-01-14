@@ -76,7 +76,9 @@ def main():
         user_choice = view.displayreportingmenu()
 
         if user_choice == "A":
-            pass
+            view.displayallplayerslist()
+            print('')
+            main()
 
         elif user_choice == "P":
             pass
