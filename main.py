@@ -4,12 +4,9 @@ from Controllers.playersmanager import gettheplayers
 from Controllers.generatepairs import generatepairs
 from Models.classclassement import Classement
 from Controllers.roundmanager import roundmanager
-from Models.classjoueur import Joueur
 from Models.constants import yes_list
 from Controllers.allplayersrankingupdate import allplayersrankingupdate, specificplayerrankingupdate
 from Controllers.dbtournoi import serializetournoi
-from Controllers.dbplayers import updateplayersrank, players_table
-from tinydb import TinyDB, Query
 
 
 def main():
