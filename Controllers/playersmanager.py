@@ -42,7 +42,7 @@ def gettheplayers(tournoi_name, players_number):
         while player_gender == '':
             try:
                 player_gender = gender_dict[int(input(
-                    f'Enter the player gender (Man --> press 1, Woman--> press 2) : ')
+                    'Enter the player gender (Man --> press 1, Woman--> press 2) : ')
                 )]
             except KeyError:
                 print('Please enter a valid gender')

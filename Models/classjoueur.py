@@ -21,7 +21,8 @@ class Joueur:
 
     def getplayerinfos(self):
         """This function returns the player infos as a list"""
-        return [self.player_index, self.last_name, self.first_name, self.birth_date, self.gender, self.rank, self.score]
+        return [self.player_index, self.last_name, self.first_name, self.birth_date, self.gender, self.rank,
+                self.score]
 
     def addscore(self, match_result):
         """This function updates the score attribute of the player instance depending on a match result"""

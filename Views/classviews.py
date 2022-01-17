@@ -44,8 +44,8 @@ class View:
         2. Players of a tournament list --> press P
         3. All tournaments list --> press T
         4. Tournament all rounds list --> press R
-        5. Tournament all matches list --> press M 
-        6. Back to main menu --> press B   
+        5. Tournament all matches list --> press M
+        6. Back to main menu --> press B
         --------------------------------------------""")
         user_choice = ''
         while user_choice not in reporting_menu_list:
@@ -90,7 +90,7 @@ class View:
 
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
-                print(f"Display all players list in alphabetical order")
+                print("Display all players list in alphabetical order")
                 print(f"""
 -------------------------------------------------------------------
 {header_allplayerslist}
@@ -104,7 +104,7 @@ class View:
 
             # List displayed by ranking order
             elif user_choice == 'RANKING':
-                print(f"Display all players list in ranking order")
+                print("Display all players list in ranking order")
                 print(f"""
 -------------------------------------------------------------------
 {header_allplayerslist}
@@ -152,7 +152,7 @@ class View:
             # List displayed by ranking order
             elif user_choice == 'RANKING':
                 print(f"Display {tournament.name} players list in ranking order")
-                print(f"Display all players list in alphabetical order")
+                print("Display all players list in alphabetical order")
                 print(f"""
 -------------------------------------------------------------------
 {header_allplayerslist}
