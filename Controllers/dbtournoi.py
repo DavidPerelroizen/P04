@@ -50,9 +50,13 @@ def serializetournoi(tournoi_for_serializing):
 def deserializetournoi():
     """name, place, date_list, rounds_list, description, time_controller, players_list=[],
             rounds_number"""
-    tournoi_name = input('Enter the tournament name: ')
-    Tournoi_search = Query()
-    tournoi_dict = tournois_table.search(Tournoi_search.name == tournoi_name)
+    tournoi_dict = []
+
+    while tournoi_dict == []:
+        tournoi_name = input('Enter the tournament name: ')
+        Tournoi_search = Query()
+        tournoi_dict = tournois_table.search(Tournoi_search.name == tournoi_name)
+
     tournoi_deserialized = ''
 
     for element in tournoi_dict:
