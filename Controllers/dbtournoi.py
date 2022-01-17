@@ -2,6 +2,7 @@ import json
 from tinydb import TinyDB, Query
 from Models.classtournoi import Tournoi
 from Controllers.dbplayers import deserializeplayersdicos
+from Models.classtour import Tour
 
 
 db = TinyDB('db.json')
@@ -81,3 +82,13 @@ def deserializealltournois():
 
     return tournament_list
 
+def deserializerounds(tournoi_deserialized):
+    rounds_dict = tournoi_deserialized.rounds_list
+    rounds_list = []
+
+    for round_dico in rounds_dict:
+        round_deserialized = Tour(round_dico['round_name'], round_dico['date_time_begin'],
+                              round_dico['date_time_finish'], round_dico['matches_list'])
+        rounds_list.append(round_deserialized)
+
+    return rounds_list
