@@ -1,6 +1,8 @@
 from Controllers.dbplayers import updateplayersrank
 
+
 class Joueur:
+    """This class aims at modeling a Player as an object"""
 
     def __init__(self, player_index, last_name, first_name, birth_date, gender, rank, score=0):
         self.player_index = player_index
