@@ -48,8 +48,7 @@ def serializetournoi(tournoi_for_serializing):
 
 
 def deserializetournoi():
-    """name, place, date_list, rounds_list, description, time_controller, players_list=[],
-            rounds_number"""
+    """This function deserializes a specific tournoi provided by user"""
     tournoi_dict = []
 
     while tournoi_dict == []:
@@ -66,3 +65,19 @@ def deserializetournoi():
                                        element['rounds_number'])
 
     return tournoi_deserialized
+
+def deserializealltournois():
+    """This function will deserialize all the tournois in the DB and return a list containing all of them"""
+
+    tournament_list = []
+    deserialized_tournoi_list = tournois_table.all()
+
+    for element in deserialized_tournoi_list:
+        tournoi_deserialized = Tournoi(element['name'], element['place'], element['date_list'], element['rounds_list'],
+                                       element['description'], element['time_controller'],
+                                       deserializeplayersdicos(element['players_list']),
+                                       element['rounds_number'])
+        tournament_list.append(tournoi_deserialized)
+
+    return tournament_list
+
