@@ -106,6 +106,11 @@ class View:
             # List displayed by ranking order
             elif user_choice == 'RANKING':
                 print(f"Display all players list in ranking order")
+                print(f"""
+-------------------------------------------------------------------
+{header_allplayerslist}
+-------------------------------------------------------------------""")
+
                 reporting_list = []
                 for player_deserialized in deserialized_players:
                     reporting_list.append(player_deserialized)
@@ -135,6 +140,11 @@ class View:
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
                 print(f"Display {tournament.name} players list in alphabetical order")
+                print(f"""
+-------------------------------------------------------------------
+{header_allplayerslist}
+-------------------------------------------------------------------""")
+
                 reporting_list = []
                 for player in tournament.players_list:
                     reporting_list.append(player)
@@ -145,6 +155,12 @@ class View:
             # List displayed by ranking order
             elif user_choice == 'RANKING':
                 print(f"Display {tournament.name} players list in ranking order")
+                print(f"Display all players list in alphabetical order")
+                print(f"""
+-------------------------------------------------------------------
+{header_allplayerslist}
+-------------------------------------------------------------------""")
+
                 reporting_list = []
                 for player in tournament.players_list:
                     reporting_list.append(player)
