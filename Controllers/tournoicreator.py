@@ -34,6 +34,8 @@ def tournoicreation():
         tournoi_date = datetime.date(tournoi_year, tournoi_month, tournoi_day)
 
     tournoi_description = input('Enter the tournament description : ')
+
+    # Defines the time controller with input controls
     tournoi_time_controller = ''
     while tournoi_time_controller == '':
         try:
@@ -45,6 +47,7 @@ def tournoicreation():
             print('Please enter a valid key')
     print(f'Time controller selected: {tournoi_time_controller}')
 
+    # Tournament instantiation as a Tournoi object
     tournoi = Tournoi(tournoi_name, tournoi_place, tournoi_date, [], tournoi_description, tournoi_time_controller)
 
     return tournoi
