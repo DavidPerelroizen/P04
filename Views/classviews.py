@@ -11,17 +11,7 @@ class View:
         """
         Displays the app main menu
         """
-        print(
-            """
-            CHESS APPLICATOR
-        ----------------------------------
-                MAIN MENU
-        ----------------------------------
-        1. Tournament manager --> press T
-        2. Reports --> press R
-        3. Update player rank --> U
-        4. Exit program --> press X
-        ----------------------------------""")
+
         user_choice = ''
         while user_choice not in main_menu_list:
             print(
