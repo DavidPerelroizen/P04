@@ -183,16 +183,18 @@ class View:
             print(f'{tournament.name} in {tournament.place} on {tournament.date_list}, was played with a '
                   f'{tournament.time_controller} time controller')
 
-    def displaytournamentallrounds(self, tournament):
+    def displaytournamentallrounds(self):
         """Reporting function that displays all the rounds info from a specific tournament"""
+        tournament = deserializetournoi()
 
         for rounds in tournament.rounds_list:
+            tour = Tour(rounds['round_name'], rounds['date_time_begin'], rounds['date_time_finish'], rounds['matches_list'])
             print("-----------------------------------------------")
-            print(rounds.name)
-            print(f'Round start time: {rounds.date_time_begin}')
-            print(f'Round end time: {rounds.date_time_finish}')
+            print(tour.round_name)
+            print(f'Round start time: {tour.date_time_begin}')
+            print(f'Round end time: {tour.date_time_finish}')
             print('Matches list: ')
-            for match in rounds.matches_list:
+            for match in tour.matches_list:
                 print(match)
             print("-----------------------------------------------")
 
