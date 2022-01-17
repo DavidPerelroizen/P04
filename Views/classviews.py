@@ -3,7 +3,7 @@ from Models.classtournoi import Tournoi
 from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list, \
     header_allplayerslist
 from Controllers.dbplayers import players_table, deserializeallplayers
-from Controllers.dbtournoi import deserializetournoi
+from Controllers.dbtournoi import deserializetournoi, tournois_table, deserializealltournois
 
 
 class View:
@@ -171,9 +171,14 @@ class View:
             else:
                 print('Wrong value, try again')
 
-    def displayalltournaments(self, tournament_list):
+    def displayalltournaments(self):
         """Reporting function that displays all the tournaments info from a list"""
-
+        tournament_list = deserializealltournois()
+        print('')
+        print("""
+        --------------------------------------------------------
+                        ALL TOURNAMENTS LIST
+        --------------------------------------------------------""")
         for tournament in tournament_list:
             print(f'{tournament.name} in {tournament.place} on {tournament.date_list}, was played with a '
                   f'{tournament.time_controller} time controller')
