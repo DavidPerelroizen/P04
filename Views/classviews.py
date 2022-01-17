@@ -3,7 +3,7 @@ from Models.classtournoi import Tournoi
 from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list, \
     header_allplayerslist
 from Controllers.dbplayers import players_table, deserializeallplayers
-from Controllers.dbtournoi import deserializetournoi, tournois_table, deserializealltournois
+from Controllers.dbtournoi import deserializetournoi, tournois_table, deserializealltournois, deserializerounds
 
 
 class View:
@@ -198,11 +198,14 @@ class View:
                 print(match)
             print("-----------------------------------------------")
 
-    def displaytournamenetallmatches(self, tournament):
+    def displaytournamenetallmatches(self):
         """Reporting function that displays all the matches from a specific tournament"""
+        tournament = deserializetournoi()
+
+        rounds_list = deserializerounds(tournament)
 
         match_list = []
-        for rounds in tournament.rounds_list:
+        for rounds in rounds_list:
             for match in rounds.matches_list:
                 match_list.append(match)
         print(f'{tournament.name} matches list')
