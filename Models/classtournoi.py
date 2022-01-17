@@ -1,5 +1,5 @@
 class Tournoi:
-
+    """This class aims at modeling a tournament as an object"""
     def __init__(
             self, name, place, date_list, rounds_list, description, time_controller, players_list=[],
             rounds_number=4
