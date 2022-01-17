@@ -31,11 +31,14 @@ def roundmanager(round_index, pairs_list):
             print('Result codes: 0 = pat, 1 = player 1 wins, 2 = player 2 wins')
             code_result = ''
             while code_result not in codes_results:
-                code_result = int(
-                    input(f'Enter code result {match.paire_joueurs[0][0]} vs {match.paire_joueurs[1][0]} : ')
+                try:
+                    code_result = int(
+                        input(f'Enter code result {match.paire_joueurs[0][0]} vs {match.paire_joueurs[1][0]} : ')
                 )
-                round_match_list.append(match.resultmatch(code_result))  # Appends to the match list of the round a \
-                # tuple containing two lists. Each contains the player instance and the score earned
+                except ValueError:
+                    print('Please enter a valid code result (0, 1 or 2)')
+            round_match_list.append(match.resultmatch(code_result))  # Appends to the match list of the round a \
+            # tuple containing two lists. Each contains the player instance and the score earned
 
     round_generated.matches_list = round_match_list  # Round instance receives the matches with player info and score
 

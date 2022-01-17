@@ -12,6 +12,7 @@ def tournoicreation():
     #  Define the date with checks and controls
     tournoi_date = datetime.date(1900, 1, 1)
     while tournoi_date < datetime.date.today():
+        print('The tournament date must not be in the past')
         tournoi_day = ''
         while tournoi_day not in range(1, 32):
             try:

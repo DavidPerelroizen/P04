@@ -1,4 +1,5 @@
 from Models.constants import codes_results, match_points
+from Controllers.dbplayers import updateplayersscore
 
 
 class Match:
@@ -16,12 +17,19 @@ class Match:
         if code_result == codes_results[0]:
             self.paire_joueurs[0][6] += match_points['Pat']
             self.paire_joueurs[1][6] += match_points['Pat']
+            # Update the database with the new score of each player
+            updateplayersscore(self.paire_joueurs[0][0], self.paire_joueurs[0][6])
+            updateplayersscore(self.paire_joueurs[1][0], self.paire_joueurs[1][6])
+
             return [self.paire_joueurs[0][0], match_points['Pat']], \
                    [self.paire_joueurs[1][0], match_points['Pat']]
 
         elif code_result == codes_results[1]:
             self.paire_joueurs[0][6] += match_points['Victory']
             self.paire_joueurs[1][6] += match_points['Defeat']
+            # Update the database with the new score of each player
+            updateplayersscore(self.paire_joueurs[0][0], self.paire_joueurs[0][6])
+            updateplayersscore(self.paire_joueurs[1][0], self.paire_joueurs[1][6])
 
             return [self.paire_joueurs[0][0], match_points['Victory']], \
                    [self.paire_joueurs[1][0], match_points['Defeat']]
@@ -29,8 +37,9 @@ class Match:
         else:
             self.paire_joueurs[0][6] += match_points['Defeat']
             self.paire_joueurs[1][6] += match_points['Victory']
+            # Update the database with the new score of each player
+            updateplayersscore(self.paire_joueurs[0][0], self.paire_joueurs[0][6])
+            updateplayersscore(self.paire_joueurs[1][0], self.paire_joueurs[1][6])
 
             return [self.paire_joueurs[0][0], match_points['Defeat']], \
                    [self.paire_joueurs[1][0], match_points['Victory']]
-
-

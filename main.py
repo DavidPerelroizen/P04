@@ -6,6 +6,10 @@ from Models.classclassement import Classement
 from Controllers.roundmanager import roundmanager
 from Models.classjoueur import Joueur
 from Models.constants import yes_list
+from Controllers.allplayersrankingupdate import allplayersrankingupdate, specificplayerrankingupdate
+from Controllers.dbtournoi import serializetournoi
+from Controllers.dbplayers import updateplayersrank, players_table
+from tinydb import TinyDB, Query
 
 
 def main():
@@ -26,11 +30,15 @@ def main():
                 players_number = int(input('How many players do you want to add? (even numbers only): '))
             except ValueError:
                 print('Please enter an even number of players')
-        tournoi.players_list = gettheplayers(players_number)
+        tournoi.players_list = gettheplayers(tournoi.name, players_number)
         print("")
 
         #  Launch the rounds
-        rounds_number = int(input('How many rounds do you want to play?: '))
+        rounds_number = 0
+        while rounds_number > players_number - 1 or rounds_number == 0:
+            rounds_number = int(
+                input(f'How many rounds do you want to play? (max value = {players_number - 1}): ')
+            )
         print("")
         classement = Classement()
         rounds_pairs_list = []
@@ -55,14 +63,13 @@ def main():
         #  Update rankings
         user_choice_for_update = view.proposerankingupdate()
         if user_choice_for_update in yes_list:
-            for player in tournoi.players_list:
-                joueur = Joueur(player[0], player[1], player[2], player[3], player[4], player[5], player[6])
-                updated_rank = int(input(f'Enter the new rank for {joueur.player_index} (Integer between 1 and 8): '))
-                joueur.updaterank(updated_rank)
+            allplayersrankingupdate(tournoi)
+            serializetournoi(tournoi)
             print("End of the game")
             main()
 
         else:
+            serializetournoi(tournoi)
             print("End of the game")
             main()
 
@@ -71,10 +78,47 @@ def main():
         user_choice = view.displayreportingmenu()
 
         if user_choice == "A":
-            pass
+            view.displayallplayerslist()
+            print('')
+            main()
 
         elif user_choice == "P":
-            pass
+            view.displaytournamentplayers()
+            print('')
+            main()
+
+        elif user_choice == "T":
+            view.displayalltournaments()
+            print('')
+            main()
+
+        elif user_choice == "R":
+            view.displaytournamentallrounds()
+            print('')
+            main()
+
+        elif user_choice == "M":
+            view.displaytournamenetallmatches()
+            print('')
+            main()
+
+        else:
+            print('')
+            main()
+
+    elif user_choice == 'U':
+        print(
+            """
+            ------------------------
+               PLAYER RANK UPDATE
+            ------------------------
+            """
+        )
+        user_option = 'Yes'
+        while user_option in yes_list:
+            specificplayerrankingupdate()
+            user_option = input('Do you want to update another players rank? (Yes/No): ').upper()
+        main()
 
     else:
         exit()
