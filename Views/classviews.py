@@ -208,6 +208,15 @@ class View:
         for rounds in rounds_list:
             for match in rounds.matches_list:
                 match_list.append(match)
-        print(f'{tournament.name} matches list')
+        print(f"""
+-------------------------------------------------------------------
+                       MATCHES LIST
+                        {tournament.name}
+-------------------------------------------------------------------""")
         for item in match_list:
-            print(item)
+            if item[0][1] > item[1][1]:
+                print(f'{item[0][0]} vs {item[1][0]} : {item[0][0]} wins')
+            elif item[0][1] < item[1][1]:
+                print(f'{item[0][0]} vs {item[1][0]} : {item[1][0]} wins')
+            else:
+                print(f'{item[0][0]} vs {item[1][0]} : stalemate')
