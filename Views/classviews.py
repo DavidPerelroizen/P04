@@ -9,7 +9,7 @@ class View:
 
     def displaymainmenu(self):
         """
-        Displays the app main menue
+        Displays the app main menu
         """
         print(
             """
@@ -24,6 +24,17 @@ class View:
         ----------------------------------""")
         user_choice = ''
         while user_choice not in main_menu_list:
+            print(
+                """
+                CHESS APPLICATOR
+            ----------------------------------
+                    MAIN MENU
+            ----------------------------------
+            1. Tournament manager --> press T
+            2. Reports --> press R
+            3. Update player rank --> U
+            4. Exit program --> press X
+            ----------------------------------""")
             user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
         return user_choice
