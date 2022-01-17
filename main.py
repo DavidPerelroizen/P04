@@ -97,6 +97,10 @@ def main():
             print('')
             main()
 
+        else:
+            print('')
+            main()
+
     elif user_choice == 'U':
         print(
             """
