@@ -33,8 +33,7 @@ def roundmanager(round_index, pairs_list):
             while code_result not in codes_results:
                 try:
                     code_result = int(
-                        input(f'Enter code result {match.paire_joueurs[0][0]} vs {match.paire_joueurs[1][0]} : ')
-                )
+                        input(f'Enter code result {match.paire_joueurs[0][0]} vs {match.paire_joueurs[1][0]} : '))
                 except ValueError:
                     print('Please enter a valid code result (0, 1 or 2)')
             round_match_list.append(match.resultmatch(code_result))  # Appends to the match list of the round a \
