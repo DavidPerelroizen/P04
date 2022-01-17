@@ -26,8 +26,10 @@ def deserializeallplayers():
     deserialized_players = players_table.all()
 
     for dico in deserialized_players:
+        birth_date  = dico['birth_date']
+        birth_date = birth_date[1: -2]
         player_info_list = [
-                            dico['player_index'], dico['last_name'], dico['first_name'], dico['birth_date'],
+                            dico['player_index'], dico['last_name'], dico['first_name'], birth_date,
                             dico['gender'], dico['rank'], dico['score']
                             ]
         deserialized_players_list.append(player_info_list)
@@ -39,8 +41,10 @@ def deserializeplayersdicos(list_of_dicos):
     deserialized_players_list = []
 
     for dico in list_of_dicos:
+        birth_date  = dico['birth_date']
+        birth_date = birth_date[1: -2]
         player_info_list = [
-            dico['player_index'], dico['last_name'], dico['first_name'], dico['birth_date'],
+            dico['player_index'], dico['last_name'], dico['first_name'], birth_date,
             dico['gender'], dico['rank'], dico['score']
         ]
         deserialized_players_list.append(player_info_list)
