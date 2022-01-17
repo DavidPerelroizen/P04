@@ -15,20 +15,25 @@ def serializetournoi(tournoi_for_serializing):
     :param tournoi_for_serializing:
     :return:
     """
+    # Step 1: serialize the rounds
     rounds_list_for_serialization = []
     for round_instance in tournoi_for_serializing.rounds_list:
         round_dict = {'round_name': round_instance.round_name,
+                      # Use json.dumps to avoid bugs when serializing dates
                       'date_time_begin': json.dumps(round_instance.date_time_begin, default=str),
+                      # Use json.dumps to avoid bugs when serializing dates
                       'date_time_finish': json.dumps(round_instance.date_time_finish, default=str),
                       'matches_list': round_instance.matches_list
                       }
         rounds_list_for_serialization.append(round_dict)
 
+    # Step 2: serialize the players list
     players_list_for_serialization = []
     for player_instance in tournoi_for_serializing.players_list:
         player_dict = {'player_index': player_instance[0],
                        'last_name': player_instance[1],
                        'first_name': player_instance[2],
+                       # Use json.dumps to avoid bugs when serializing dates
                        'birth_date': json.dumps(player_instance[3], default=str),
                        'gender': player_instance[4],
                        'rank': player_instance[5],
@@ -37,6 +42,7 @@ def serializetournoi(tournoi_for_serializing):
 
     tournoi_dict = {
         'name': tournoi_for_serializing.name, 'place': tournoi_for_serializing.place,
+        # Use json.dumps to avoid bugs when serializing dates
         'date_list': json.dumps(tournoi_for_serializing.date_list, default=str),
         'rounds_list': rounds_list_for_serialization,
         'description': tournoi_for_serializing.description,
@@ -59,6 +65,7 @@ def deserializetournoi():
 
     tournoi_deserialized = ''
 
+    # The loop below allows to work directly on the only dictionary contained in the tournoi_dict list
     for element in tournoi_dict:
         tournoi_deserialized = Tournoi(element['name'], element['place'], element['date_list'], element['rounds_list'],
                                        element['description'], element['time_controller'],
@@ -67,12 +74,14 @@ def deserializetournoi():
 
     return tournoi_deserialized
 
+
 def deserializealltournois():
     """This function will deserialize all the tournois in the DB and return a list containing all of them"""
 
     tournament_list = []
     deserialized_tournoi_list = tournois_table.all()
 
+    # The loop below allows to work directly on the only dictionary contained in the deserialized tournoi list
     for element in deserialized_tournoi_list:
         tournoi_deserialized = Tournoi(element['name'], element['place'], element['date_list'], element['rounds_list'],
                                        element['description'], element['time_controller'],
@@ -82,13 +91,14 @@ def deserializealltournois():
 
     return tournament_list
 
+
 def deserializerounds(tournoi_deserialized):
     rounds_dict = tournoi_deserialized.rounds_list
     rounds_list = []
 
     for round_dico in rounds_dict:
         round_deserialized = Tour(round_dico['round_name'], round_dico['date_time_begin'],
-                              round_dico['date_time_finish'], round_dico['matches_list'])
+                                  round_dico['date_time_finish'], round_dico['matches_list'])
         rounds_list.append(round_deserialized)
 
     return rounds_list
