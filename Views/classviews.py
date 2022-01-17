@@ -1,6 +1,7 @@
 from Models.classtour import Tour
 from Models.classtournoi import Tournoi
-from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list
+from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list, \
+    header_allplayerslist
 from Controllers.dbplayers import players_table, deserializeallplayers
 from Controllers.dbtournoi import deserializetournoi
 
@@ -91,6 +92,10 @@ class View:
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
                 print(f"Display all players list in alphabetical order")
+                print(f"""
+-------------------------------------------------------------------
+{header_allplayerslist}
+-------------------------------------------------------------------""")
                 reporting_list = []
                 for player_deserialized in deserialized_players:
                     reporting_list.append(player_deserialized)
