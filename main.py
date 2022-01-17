@@ -97,6 +97,11 @@ def main():
             print('')
             main()
 
+        elif user_choice == "M":
+            view.displaytournamenetallmatches()
+            print('')
+            main()
+
         else:
             print('')
             main()
