@@ -18,4 +18,6 @@ main_menu_list = ['T', 'R', 'X', 'U']
 
 time_controllers_dict = {3: 'bullet', 2: 'coup rapide', 1: 'blitz'}
 
+header_allplayerslist = ['Player index', 'Last name', 'First name', 'Birthday', 'Gender', 'Rank', 'Score']
+
 reporting_ordering_dict = {1: 'ALPHABETICAL', 2: 'RANKING'}
