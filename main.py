@@ -87,6 +87,11 @@ def main():
             print('')
             main()
 
+        elif user_choice == "T":
+            view.displayalltournaments()
+            print('')
+            main()
+
     elif user_choice == 'U':
         print(
             """
