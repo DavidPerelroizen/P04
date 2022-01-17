@@ -1,9 +1,8 @@
 from Models.classtour import Tour
-from Models.classtournoi import Tournoi
 from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list, \
     header_allplayerslist
-from Controllers.dbplayers import players_table, deserializeallplayers
-from Controllers.dbtournoi import deserializetournoi, tournois_table, deserializealltournois, deserializerounds
+from Controllers.dbplayers import deserializeallplayers
+from Controllers.dbtournoi import deserializetournoi, deserializealltournois, deserializerounds
 
 
 class View:
@@ -32,7 +31,7 @@ class View:
 
     def displayreportingmenu(self):
         """
-        Displays the secondary secondary menue
+        Displays the secondary secondary menu
         Application: reporting
         """
         print(
@@ -110,7 +109,6 @@ class View:
 -------------------------------------------------------------------
 {header_allplayerslist}
 -------------------------------------------------------------------""")
-
                 reporting_list = []
                 for player_deserialized in deserialized_players:
                     reporting_list.append(player_deserialized)
@@ -144,7 +142,6 @@ class View:
 -------------------------------------------------------------------
 {header_allplayerslist}
 -------------------------------------------------------------------""")
-
                 reporting_list = []
                 for player in tournament.players_list:
                     reporting_list.append(player)
@@ -160,7 +157,6 @@ class View:
 -------------------------------------------------------------------
 {header_allplayerslist}
 -------------------------------------------------------------------""")
-
                 reporting_list = []
                 for player in tournament.players_list:
                     reporting_list.append(player)
@@ -187,8 +183,10 @@ class View:
         """Reporting function that displays all the rounds info from a specific tournament"""
         tournament = deserializetournoi()
 
+        # For each round info contained into the tournament, the loop will instantiate a Tour object
         for rounds in tournament.rounds_list:
-            tour = Tour(rounds['round_name'], rounds['date_time_begin'], rounds['date_time_finish'], rounds['matches_list'])
+            tour = Tour(rounds['round_name'], rounds['date_time_begin'], rounds['date_time_finish'],
+                        rounds['matches_list'])
             print("-----------------------------------------------")
             print(tour.round_name)
             print(f'Round start time: {tour.date_time_begin}')
@@ -200,10 +198,11 @@ class View:
 
     def displaytournamenetallmatches(self):
         """Reporting function that displays all the matches from a specific tournament"""
-        tournament = deserializetournoi()
+        tournament = deserializetournoi()  # Deserialize the desired tournament
 
-        rounds_list = deserializerounds(tournament)
+        rounds_list = deserializerounds(tournament)  # Get the list of Tour objects
 
+        # From the Tour objects, get the matches list and print the desired output
         match_list = []
         for rounds in rounds_list:
             for match in rounds.matches_list:
