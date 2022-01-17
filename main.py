@@ -92,6 +92,11 @@ def main():
             print('')
             main()
 
+        elif user_choice == "R":
+            view.displaytournamentallrounds()
+            print('')
+            main()
+
     elif user_choice == 'U':
         print(
             """
