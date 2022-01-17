@@ -13,6 +13,7 @@ def gettheplayers(tournoi_name, players_number):
         """For each player the code will request information that will help to instantiate the players objects"""
         print("")
 
+        # The script below helps to collect the player's information, with input controls
         player_index = tournoi_name + "_Player_" + str(i)
         print('Prepare to fill in information for ', player_index)
         player_last_name = input('Enter the player last name : ').upper()
@@ -55,11 +56,12 @@ def gettheplayers(tournoi_name, players_number):
                     print(f'Rank n° {player_rank} was already assigned to another player. Please enter another one.')
             except ValueError:
                 print('Integers only from 1 to ', players_number)
-        forbidden_ranks.append(player_rank)
+        forbidden_ranks.append(player_rank)  # Once a rank is assigned, it cannot be used again on another player
         player_score = 0
 
         print("")
 
+        # Consolidates the player info into a list to facilitate the next steps
         player = [
             player_index, player_last_name, player_first_name, player_birth_date, player_gender, player_rank,
             player_score
