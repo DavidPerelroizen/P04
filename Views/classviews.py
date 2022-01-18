@@ -1,6 +1,6 @@
 from Models.classtour import Tour
 from Models.constants import reporting_menu_list, main_menu_list, yes_list, reporting_ordering_dict, no_list, \
-    header_allplayerslist
+    header_allplayerslist, main_menu_display, reporting_menu_display
 from Controllers.dbplayers import deserializeallplayers
 from Controllers.dbtournoi import deserializetournoi, deserializealltournois, deserializerounds
 
@@ -14,21 +14,7 @@ class View:
 
         user_choice = ''
         while user_choice not in main_menu_list:
-            print(
-                """
-                CHESS APPLICATOR
-            --------------------------------------------
-                    MAIN MENU
-            --------------------------------------------
-            1. Tournament manager --> press T
-            2. Complete a saved tournament with players
-                and rounds --> press C
-            3. Complete a saved tournament with rounds
-                --> press S
-            4. Reports --> press R
-            5. Update player rank --> U
-            6. Exit program --> press X
-            --------------------------------------------""")
+            print(main_menu_display)
             user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
         return user_choice
@@ -38,19 +24,7 @@ class View:
         Displays the secondary secondary menu
         Application: reporting
         """
-        print(
-            """
-                    CHESS APPLICATOR
-        --------------------------------------------
-                     REPORTING MENU
-        --------------------------------------------
-        1. All players list --> press A
-        2. Players of a tournament list --> press P
-        3. All tournaments list --> press T
-        4. Tournament all rounds list --> press R
-        5. Tournament all matches list --> press M
-        6. Back to main menu --> press B
-        --------------------------------------------""")
+        print(reporting_menu_display)
         user_choice = ''
         while user_choice not in reporting_menu_list:
             user_choice = input('        Press the appropriate key + ENTER : ').upper()
@@ -231,3 +205,21 @@ class View:
                 print(f'{item[0][0]} vs {item[1][0]} : {item[1][0]} wins')
             else:
                 print(f'{item[0][0]} vs {item[1][0]} : stalemate')
+
+    def displaytournamentwithoutplayerslistsimplified(self):
+        """This function displays a simplified list of the tournaments names in order to help the user"""
+        tournament_list = deserializealltournois()
+        print('')
+        print("""---Tournaments available---""")
+        for tournament in tournament_list:
+            if tournament.players_list == []:
+                print(f'{tournament.name}')
+
+    def displaytournamentwithoutroundslistsimplified(self):
+        """This function displays a simplified list of the tournaments names in order to help the user"""
+        tournament_list = deserializealltournois()
+        print('')
+        print("""---Tournaments available---""")
+        for tournament in tournament_list:
+            if not tournament.rounds_list:
+                print(f'{tournament.name}')
