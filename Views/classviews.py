@@ -119,6 +119,14 @@ class View:
             else:
                 print('Wrong value, try again!')
 
+    def displaytournamentlistsimplified(self):
+        """This function displays a simplified list of the tournaments names in order to help the user"""
+        tournament_list = deserializealltournois()
+        print('')
+        print("""---Tournaments available---""")
+        for tournament in tournament_list:
+            print(f'{tournament.name}')
+
     def displaytournamentplayers(self):
         """Reporting function that will display all the players of a specific tournament"""
 
