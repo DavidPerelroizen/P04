@@ -80,6 +80,8 @@ def main():
             main()
 
         elif user_choice == "P":
+            view.displaytournamentlistsimplified()
+            print('')
             view.displaytournamentplayers()
             print('')
             main()
@@ -90,11 +92,15 @@ def main():
             main()
 
         elif user_choice == "R":
+            view.displaytournamentlistsimplified()
+            print('')
             view.displaytournamentallrounds()
             print('')
             main()
 
         elif user_choice == "M":
+            view.displaytournamentlistsimplified()
+            print('')
             view.displaytournamenetallmatches()
             print('')
             main()
