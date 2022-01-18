@@ -6,9 +6,10 @@ from Models.classclassement import Classement
 from Controllers.roundmanager import roundmanager
 from Models.constants import yes_list, no_list
 from Controllers.allplayersrankingupdate import allplayersrankingupdate, specificplayerrankingupdate
-from Controllers.dbtournoi import serializetournoi, deserializetournoi
+from Controllers.dbtournoi import serializetournoi, deserializetournoi, tournois_table
 from Controllers.Utils.playerscreation import playerscreation
 from Controllers.Utils.roundslauncher import roundslauncher
+from tinydb import Query
 
 
 def main():
@@ -68,8 +69,10 @@ def main():
         view.displaytournamentwithoutplayerslistsimplified()
         print('')
 
-        # Deserialize a tournoi to complete
+        # Deserialize a tournoi to complete and removes the incomplete instance from the database
         tournoi = deserializetournoi()
+        tournoi_search = Query()
+        tournois_table.remove(tournoi_search.name == tournoi.name)
 
         #  Players creation
         tournoi = playerscreation(tournoi)
@@ -140,9 +143,10 @@ def main():
         view.displaytournamentwithoutroundslistsimplified()
         print('')
 
-        # Deserialize a tournoi to complete
+        # Deserialize a tournoi to complete and removes the incomplete instance from the database
         tournoi = deserializetournoi()
-        players_number = len(tournoi.players_list)
+        tournoi_search = Query()
+        tournois_table.remove(tournoi_search.name == tournoi.name)
 
         #  Launch the rounds
         tournoi = roundslauncher(tournoi)
