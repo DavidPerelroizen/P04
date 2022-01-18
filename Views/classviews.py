@@ -21,7 +21,8 @@ class View:
                     MAIN MENU
             --------------------------------------------
             1. Tournament manager --> press T
-            2. Complete a saved tournament --> press C
+            2. Complete a saved tournament with players
+                and rounds --> press C
             3. Reports --> press R
             4. Update player rank --> U
             5. Exit program --> press X
