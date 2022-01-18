@@ -79,7 +79,7 @@ def main():
                     main()
 
     elif user_choice == 'C':
-        """Complete an already created tournament"""
+        """Complete an already created tournament with players and rounds"""
         print("""
         -----------------------------------------
                     Complete an existing
