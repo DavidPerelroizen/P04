@@ -14,7 +14,7 @@ no_list = ['No', 'NO', 'no', 'nO', 'N', 'n']
 
 reporting_menu_list = ['A', 'P', 'T', 'R', 'M', 'B']
 
-main_menu_list = ['T', 'R', 'X', 'U']
+main_menu_list = ['T', 'R', 'X', 'U', 'C']
 
 time_controllers_dict = {3: 'bullet', 2: 'coup rapide', 1: 'blitz'}
 
