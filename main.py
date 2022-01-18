@@ -49,9 +49,11 @@ def main():
                         #  Launch the rounds
                         rounds_number = 0
                         while rounds_number > players_number - 1 or rounds_number == 0:
-                            rounds_number = int(
-                                input(f'How many rounds do you want to play? (max value = {players_number - 1}): ')
-                            )
+                            try:
+                                rounds_number = int(
+                                    input(f'How many rounds do you want to play? (max value = {players_number - 1}): '))
+                            except ValueError:
+                                print('Please enter an integer.')
                         print("")
                         classement = Classement()
                         rounds_pairs_list = []
@@ -93,7 +95,7 @@ def main():
                     Complete an existing
                         Tournament
         -----------------------------------------""")
-        view.displaytournamentlistsimplified()
+        view.displaytournamentwithoutplayerslistsimplified()
         print('')
 
         # Deserialize a tournoi to complete
@@ -112,9 +114,11 @@ def main():
         #  Launch the rounds
         rounds_number = 0
         while rounds_number > players_number - 1 or rounds_number == 0:
-            rounds_number = int(
-                input(f'How many rounds do you want to play? (max value = {players_number - 1}): ')
-            )
+            try:
+                rounds_number = int(
+                    input(f'How many rounds do you want to play? (max value = {players_number - 1}): '))
+            except ValueError:
+                print('Please enter an integer.')
         print("")
         classement = Classement()
         rounds_pairs_list = []
@@ -195,7 +199,7 @@ def main():
                     Complete an existing
                     tournament with rounds
         -----------------------------------------""")
-        view.displaytournamentlistsimplified()
+        view.displaytournamentwithoutroundslistsimplified()
         print('')
 
         # Deserialize a tournoi to complete
@@ -205,9 +209,11 @@ def main():
         #  Launch the rounds
         rounds_number = 0
         while rounds_number > players_number - 1 or rounds_number == 0:
-            rounds_number = int(
-                input(f'How many rounds do you want to play? (max value = {players_number - 1}): ')
-            )
+            try:
+                rounds_number = int(
+                    input(f'How many rounds do you want to play? (max value = {players_number - 1}): '))
+            except ValueError:
+                print('Please enter an integer.')
         print("")
         classement = Classement()
         rounds_pairs_list = []
