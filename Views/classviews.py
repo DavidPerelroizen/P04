@@ -17,14 +17,15 @@ class View:
             print(
                 """
                 CHESS APPLICATOR
-            ----------------------------------
+            --------------------------------------------
                     MAIN MENU
-            ----------------------------------
+            --------------------------------------------
             1. Tournament manager --> press T
-            2. Reports --> press R
-            3. Update player rank --> U
-            4. Exit program --> press X
-            ----------------------------------""")
+            2. Complete a saved tournament --> press C
+            3. Reports --> press R
+            4. Update player rank --> U
+            5. Exit program --> press X
+            --------------------------------------------""")
             user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
         return user_choice
