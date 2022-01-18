@@ -162,7 +162,7 @@ class View:
                         ALL TOURNAMENTS LIST
         --------------------------------------------------------""")
         for tournament in tournament_list:
-            print(f'{tournament.name} in {tournament.place} on {tournament.date_list}, was played with a '
+            print(f'{tournament.name} in {tournament.place} on {tournament.date_list}, played with a '
                   f'{tournament.time_controller} time controller')
 
     def displaytournamentallrounds(self):
