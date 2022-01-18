@@ -23,9 +23,11 @@ class View:
             1. Tournament manager --> press T
             2. Complete a saved tournament with players
                 and rounds --> press C
-            3. Reports --> press R
-            4. Update player rank --> U
-            5. Exit program --> press X
+            3. Complete a saved tournament with rounds
+                --> press S
+            4. Reports --> press R
+            5. Update player rank --> U
+            6. Exit program --> press X
             --------------------------------------------""")
             user_choice = input('        Press the appropriate key + ENTER : ').upper()
 
