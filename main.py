@@ -4,9 +4,9 @@ from Controllers.playersmanager import gettheplayers
 from Controllers.generatepairs import generatepairs
 from Models.classclassement import Classement
 from Controllers.roundmanager import roundmanager
-from Models.constants import yes_list
+from Models.constants import yes_list, no_list
 from Controllers.allplayersrankingupdate import allplayersrankingupdate, specificplayerrankingupdate
-from Controllers.dbtournoi import serializetournoi
+from Controllers.dbtournoi import serializetournoi, deserializetournoi
 
 
 def main():
@@ -19,6 +19,77 @@ def main():
         #  Tournament initialization
         tournoi = tournoicreation()
         print("")
+
+        # Propose to save and postpone the rest of the tournament process
+        user_choice = ''
+        while user_choice not in yes_list and user_choice not in no_list:
+            user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
+            if user_choice in yes_list:
+                serializetournoi(tournoi)
+                main()
+            else:
+                #  Players creation
+                players_number = 0
+                while players_number % 2 != 0 or players_number == 0:
+                    try:
+                        players_number = int(input('How many players do you want to add? (even numbers only): '))
+                    except ValueError:
+                        print('Please enter an even number of players')
+                tournoi.players_list = gettheplayers(tournoi.name, players_number)
+                print("")
+
+                #  Launch the rounds
+                rounds_number = 0
+                while rounds_number > players_number - 1 or rounds_number == 0:
+                    rounds_number = int(
+                        input(f'How many rounds do you want to play? (max value = {players_number - 1}): ')
+                    )
+                print("")
+                classement = Classement()
+                rounds_pairs_list = []
+                for i in range(1, rounds_number + 1):
+                    """
+                    For each round, the program will follow the below steps:
+                    1. Refresh the ranking
+                    2. Generate a new set of pairs
+                    3. Play the round
+                    4. Add the round info to the tournoi
+                    5. Add the round pairs list to the instance of the round
+                    """
+                    players_ranking = classement.ranking(tournoi.players_list)  # Step 1
+                    pairs_list = generatepairs(players_ranking, rounds_pairs_list, i, players_number)  # Step2
+                    round_information = roundmanager(i, pairs_list)  # Step 3
+                    tournoi.rounds_list.append(round_information)  # Step 4
+                    rounds_pairs_list.append(pairs_list)  # Step 5
+                    print("")
+                    view.displayroundresult(i, round_information)
+                    print("")
+
+                #  Update rankings
+                user_choice_for_update = view.proposerankingupdate()
+                if user_choice_for_update in yes_list:
+                    allplayersrankingupdate(tournoi)
+                    serializetournoi(tournoi)
+                    print("End of the game")
+                    main()
+
+                else:
+                    serializetournoi(tournoi)
+                    print("End of the game")
+                    main()
+
+    elif user_choice == 'C':
+        """Complete an already created tournament"""
+        print("""
+        -----------------------------------------
+                    Complete an existing
+                        Tournament
+        -----------------------------------------""")
+        view.displaytournamentlistsimplified()
+        print('')
+
+        # Deserialize a tournoi to complete
+        tournoi = deserializetournoi()
 
         #  Players creation
         players_number = 0
