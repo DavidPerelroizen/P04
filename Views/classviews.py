@@ -212,7 +212,7 @@ class View:
         print('')
         print("""---Tournaments available---""")
         for tournament in tournament_list:
-            if tournament.players_list == []:
+            if not tournament.players_list and not tournament.rounds_list:
                 print(f'{tournament.name}')
 
     def displaytournamentwithoutroundslistsimplified(self):
@@ -221,5 +221,5 @@ class View:
         print('')
         print("""---Tournaments available---""")
         for tournament in tournament_list:
-            if not tournament.rounds_list:
+            if not tournament.rounds_list and tournament.players_list != []:
                 print(f'{tournament.name}')
