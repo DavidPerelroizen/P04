@@ -138,7 +138,6 @@ class View:
             # List displayed by ranking order
             elif user_choice == 'RANKING':
                 print(f"Display {tournament.name} players list in ranking order")
-                print("Display all players list in alphabetical order")
                 print(f"""
 -------------------------------------------------------------------
 {header_allplayerslist}

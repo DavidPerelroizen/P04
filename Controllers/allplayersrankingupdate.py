@@ -7,6 +7,7 @@ def allplayersrankingupdate(tournoi):
     forbidden_ranks = []
     updated_rank = 0
     joueur = ''
+    updated_players_list = []
 
     for player in tournoi.players_list:
         while updated_rank not in range(1, len(tournoi.players_list) + 1) or updated_rank in forbidden_ranks:
@@ -26,6 +27,10 @@ def allplayersrankingupdate(tournoi):
 
         forbidden_ranks.append(updated_rank)
         joueur.updaterank(updated_rank)
+        updated_players_list.append([joueur.player_index, joueur.last_name, joueur.first_name, joueur.birth_date,
+                                     joueur.gender, joueur.rank, joueur.score])
+
+    tournoi.players_list = updated_players_list
 
 
 def specificplayerrankingupdate():
