@@ -107,7 +107,8 @@ class View:
 
     def displaytournamentplayers(self):
         """Reporting function that will display all the players of a specific tournament"""
-
+        # Deserialize the tournament
+        tournament = deserializetournoi()
         user_choice = ''
         while user_choice not in ['ALPHABETICAL', 'RANKING']:
             try:
@@ -117,9 +118,6 @@ class View:
                 print('Please enter a valid key')
             except KeyError:
                 print('Please enter a valid key')
-
-            # Deserialize the tournament
-            tournament = deserializetournoi()
 
             # List displayed by alphabetical order
             if user_choice == 'ALPHABETICAL':
