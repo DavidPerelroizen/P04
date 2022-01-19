@@ -9,13 +9,8 @@ db = TinyDB('db.json')
 tournois_table = db.table('tournois')
 
 
-def serializetournoi(tournoi_for_serializing):
-    """
-    This function aims at serializing a tournoi (class = Tournoi()) and insert is in the tiny DB
-    :param tournoi_for_serializing:
-    :return:
-    """
-    # Step 1: serialize the rounds
+def serializetherounds(tournoi_for_serializing):
+    """This function helps serializing a rounds list for a specific tournament"""
     rounds_list_for_serialization = []
     for round_instance in tournoi_for_serializing.rounds_list:
         round_dict = {'round_name': round_instance.round_name,
@@ -27,7 +22,11 @@ def serializetournoi(tournoi_for_serializing):
                       }
         rounds_list_for_serialization.append(round_dict)
 
-    # Step 2: serialize the players list
+    return rounds_list_for_serialization
+
+
+def serializetheplayerslist(tournoi_for_serializing):
+    """This function helps serializing a players list for a specific tournament"""
     players_list_for_serialization = []
     for player_instance in tournoi_for_serializing.players_list:
         player_dict = {'player_index': player_instance[0],
@@ -40,6 +39,21 @@ def serializetournoi(tournoi_for_serializing):
                        'score': player_instance[6]}
         players_list_for_serialization.append(player_dict)
 
+    return players_list_for_serialization
+
+def serializetournoi(tournoi_for_serializing):
+    """
+    This function aims at serializing a tournoi (class = Tournoi()) and insert is in the tiny DB
+    :param tournoi_for_serializing:
+    :return:
+    """
+    # Step 1: serialize the rounds
+    rounds_list_for_serialization = serializetherounds(tournoi_for_serializing)
+
+    # Step 2: serialize the players list
+    players_list_for_serialization = serializetheplayerslist(tournoi_for_serializing)
+
+    # Instantiate the tournament dictionary
     tournoi_dict = {
         'name': tournoi_for_serializing.name, 'place': tournoi_for_serializing.place,
         # Use json.dumps to avoid bugs when serializing dates
