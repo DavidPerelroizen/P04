@@ -9,6 +9,7 @@ from Controllers.allplayersrankingupdate import allplayersrankingupdate, specifi
 from Controllers.dbtournoi import serializetournoi, deserializetournoi, tournois_table
 from Controllers.Utils.playerscreation import playerscreation
 from Controllers.Utils.roundslauncher import roundslauncher
+from Controllers.Utils.updaterankings import updaterankings
 from tinydb import Query
 
 
@@ -27,37 +28,29 @@ def main():
         user_choice = ''
         while user_choice not in yes_list and user_choice not in no_list:
             user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
+        if user_choice in yes_list:
+            serializetournoi(tournoi)
+            main()
+        else:
+            #  Players creation
+            tournoi = playerscreation(tournoi)
+            print("")
+
+            # Propose to save and postpone the rest of the tournament process
+            user_choice = ''
+            while user_choice not in yes_list and user_choice not in no_list:
+                user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
             if user_choice in yes_list:
                 serializetournoi(tournoi)
                 main()
             else:
-                #  Players creation
-                tournoi = playerscreation(tournoi)
-                print("")
+                #  Launch the rounds
+                tournoi = roundslauncher(tournoi)
 
-                # Propose to save and postpone the rest of the tournament process
-                user_choice = ''
-                while user_choice not in yes_list and user_choice not in no_list:
-                    user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
-                    if user_choice in yes_list:
-                        serializetournoi(tournoi)
-                        main()
-                    else:
-                        #  Launch the rounds
-                        tournoi = roundslauncher(tournoi)
-
-                        #  Update rankings
-                        user_choice_for_update = view.proposerankingupdate()
-                        if user_choice_for_update in yes_list:
-                            allplayersrankingupdate(tournoi)
-                            serializetournoi(tournoi)
-                            print("End of the game")
-                            main()
-
-                        else:
-                            serializetournoi(tournoi)
-                            print("End of the game")
-                            main()
+                #  Update rankings
+                updaterankings(tournoi)
+                print("End of the game")
+                main()
 
     elif user_choice == 'C':
         """Complete an already created tournament with players and rounds"""
@@ -82,25 +75,17 @@ def main():
         user_choice = ''
         while user_choice not in yes_list and user_choice not in no_list:
             user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
-            if user_choice in yes_list:
-                serializetournoi(tournoi)
-                main()
-            else:
-                #  Launch the rounds
-                tournoi = roundslauncher(tournoi)
+        if user_choice in yes_list:
+            serializetournoi(tournoi)
+            main()
+        else:
+            #  Launch the rounds
+            tournoi = roundslauncher(tournoi)
 
-                #  Update rankings
-                user_choice_for_update = view.proposerankingupdate()
-                if user_choice_for_update in yes_list:
-                    allplayersrankingupdate(tournoi)
-                    serializetournoi(tournoi)
-                    print("End of the game")
-                    main()
-
-                else:
-                    serializetournoi(tournoi)
-                    print("End of the game")
-                    main()
+            #  Update rankings
+            updaterankings(tournoi)
+            print("End of the game")
+            main()
 
     elif user_choice == 'R':
         """Reporting management"""
@@ -160,17 +145,9 @@ def main():
         tournoi = roundslauncher(tournoi)
 
         #  Update rankings
-        user_choice_for_update = view.proposerankingupdate()
-        if user_choice_for_update in yes_list:
-            allplayersrankingupdate(tournoi)
-            serializetournoi(tournoi)
-            print("End of the game")
-            main()
-
-        else:
-            serializetournoi(tournoi)
-            print("End of the game")
-            main()
+        updaterankings(tournoi)
+        print("End of the game")
+        main()
 
     elif user_choice == 'U':
         print(
