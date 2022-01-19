@@ -41,6 +41,7 @@ def serializetheplayerslist(tournoi_for_serializing):
 
     return players_list_for_serialization
 
+
 def serializetournoi(tournoi_for_serializing):
     """
     This function aims at serializing a tournoi (class = Tournoi()) and insert is in the tiny DB
@@ -74,8 +75,8 @@ def deserializetournoi():
 
     while tournoi_dict == []:
         tournoi_name = input('Enter the tournament name: ')
-        Tournoi_search = Query()
-        tournoi_dict = tournois_table.search(Tournoi_search.name == tournoi_name)
+        tournoi_search = Query()
+        tournoi_dict = tournois_table.search(tournoi_search.name == tournoi_name)
 
     tournoi_deserialized = ''
 

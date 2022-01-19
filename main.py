@@ -1,11 +1,7 @@
 from Views.classviews import View
 from Controllers.tournoicreator import tournoicreation
-from Controllers.playersmanager import gettheplayers
-from Controllers.generatepairs import generatepairs
-from Models.classclassement import Classement
-from Controllers.roundmanager import roundmanager
 from Models.constants import yes_list, no_list
-from Controllers.allplayersrankingupdate import allplayersrankingupdate, specificplayerrankingupdate
+from Controllers.allplayersrankingupdate import specificplayerrankingupdate
 from Controllers.dbtournoi import serializetournoi, deserializetournoi, tournois_table
 from Controllers.Utils.playerscreation import playerscreation
 from Controllers.Utils.roundslauncher import roundslauncher

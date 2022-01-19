@@ -3,6 +3,7 @@ from Views.classviews import View
 from Controllers.generatepairs import generatepairs
 from Controllers.roundmanager import roundmanager
 
+
 def roundslauncher(tournoi):
     """This function consolidates the code helping to launch rounds"""
     view = View()
