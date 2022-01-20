@@ -55,33 +55,37 @@ def main():
                     Complete an existing
                         Tournament
         -----------------------------------------""")
-        view.displaytournamentwithoutplayerslistsimplified()
-        print('')
-
-        # Deserialize a tournoi to complete and removes the incomplete instance from the database
-        tournoi = deserializetournoi()
-        tournoi_search = Query()
-        tournois_table.remove(tournoi_search.name == tournoi.name)
-
-        #  Players creation
-        tournoi = playerscreation(tournoi)
-        print("")
-
-        # Propose to save and postpone the rest of the tournament process
-        user_choice = ''
-        while user_choice not in yes_list and user_choice not in no_list:
-            user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
-        if user_choice in yes_list:
-            serializetournoi(tournoi)
+        tournament_list = view.displaytournamentwithoutplayerslistsimplified()
+        if not tournament_list:
+            print('No tournament needs completion')
             main()
         else:
-            #  Launch the rounds
-            tournoi = roundslauncher(tournoi)
+            print('')
 
-            #  Update rankings
-            updaterankings(tournoi)
-            print("End of the game")
-            main()
+            # Deserialize a tournoi to complete and removes the incomplete instance from the database
+            tournoi = deserializetournoi()
+            tournoi_search = Query()
+            tournois_table.remove(tournoi_search.name == tournoi.name)
+
+            #  Players creation
+            tournoi = playerscreation(tournoi)
+            print("")
+
+            # Propose to save and postpone the rest of the tournament process
+            user_choice = ''
+            while user_choice not in yes_list and user_choice not in no_list:
+                user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
+            if user_choice in yes_list:
+                serializetournoi(tournoi)
+                main()
+            else:
+                #  Launch the rounds
+                tournoi = roundslauncher(tournoi)
+
+                #  Update rankings
+                updaterankings(tournoi)
+                print("End of the game")
+                main()
 
     elif user_choice == 'R':
         """Reporting management"""
@@ -129,21 +133,25 @@ def main():
                     Complete an existing
                     tournament with rounds
         -----------------------------------------""")
-        view.displaytournamentwithoutroundslistsimplified()
-        print('')
+        tournament_list = view.displaytournamentwithoutroundslistsimplified()
+        if not tournament_list:
+            print('No tournament needs completion')
+            main()
+        else:
+            print('')
 
-        # Deserialize a tournoi to complete and removes the incomplete instance from the database
-        tournoi = deserializetournoi()
-        tournoi_search = Query()
-        tournois_table.remove(tournoi_search.name == tournoi.name)
+            # Deserialize a tournoi to complete and removes the incomplete instance from the database
+            tournoi = deserializetournoi()
+            tournoi_search = Query()
+            tournois_table.remove(tournoi_search.name == tournoi.name)
 
-        #  Launch the rounds
-        tournoi = roundslauncher(tournoi)
+            #  Launch the rounds
+            tournoi = roundslauncher(tournoi)
 
-        #  Update rankings
-        updaterankings(tournoi)
-        print("End of the game")
-        main()
+            #  Update rankings
+            updaterankings(tournoi)
+            print("End of the game")
+            main()
 
     elif user_choice == 'U':
         print(

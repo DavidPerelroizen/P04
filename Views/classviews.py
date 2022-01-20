@@ -105,6 +105,8 @@ class View:
         for tournament in tournament_list:
             print(f'{tournament.name}')
 
+        return tournament_list
+
     def displaytournamentplayers(self):
         """Reporting function that will display all the players of a specific tournament"""
         # Deserialize the tournament
@@ -206,17 +208,25 @@ class View:
     def displaytournamentwithoutplayerslistsimplified(self):
         """This function displays a simplified list of the tournaments names in order to help the user"""
         tournament_list = deserializealltournois()
+        tournament_list_names = []
         print('')
         print("""---Tournaments available---""")
         for tournament in tournament_list:
             if not tournament.players_list and not tournament.rounds_list:
                 print(f'{tournament.name}')
+                tournament_list_names.append(tournament.name)
+
+        return tournament_list_names
 
     def displaytournamentwithoutroundslistsimplified(self):
         """This function displays a simplified list of the tournaments names in order to help the user"""
         tournament_list = deserializealltournois()
+        tournament_list_names = []
         print('')
         print("""---Tournaments available---""")
         for tournament in tournament_list:
             if not tournament.rounds_list and tournament.players_list != []:
                 print(f'{tournament.name}')
+                tournament_list_names.append(tournament.name)
+
+        return tournament_list_names
