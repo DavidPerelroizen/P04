@@ -14,7 +14,7 @@ no_list = ['No', 'NO', 'no', 'nO', 'N', 'n']
 
 reporting_menu_list = ['A', 'P', 'T', 'R', 'M', 'B']
 
-main_menu_list = ['T', 'R', 'X', 'U', 'C', 'S']
+main_menu_list = ['T', 'R', 'X', 'U', 'C', 'S', 'M']
 
 time_controllers_dict = {3: 'bullet', 2: 'coup rapide', 1: 'blitz'}
 
@@ -32,9 +32,11 @@ main_menu_display = """
                 and rounds --> press C
             3. Complete a saved tournament with rounds
                 --> press S
-            4. Reports --> press R
-            5. Update player rank --> U
-            6. Exit program --> press X
+            4. Complete a saved tournament with the 
+                missing rounds --> M
+            5. Reports --> press R
+            6. Update player rank --> U
+            7. Exit program --> press X
             --------------------------------------------"""
 
 reporting_menu_display = """
