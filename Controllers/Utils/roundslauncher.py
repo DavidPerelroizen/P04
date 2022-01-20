@@ -18,6 +18,7 @@ def roundslauncher(tournoi):
         except ValueError:
             print('Please enter an integer.')
     print("")
+    tournoi.rounds_number = rounds_number
     classement = Classement()
     rounds_pairs_list = []
     for i in range(1, rounds_number + 1):
@@ -43,7 +44,6 @@ def roundslauncher(tournoi):
         while user_choice not in yes_list and user_choice not in no_list:
             user_choice = input('Save and continue later ---> Yes, Continue now --> No: ')
         if user_choice in yes_list:
-            serializetournoi(tournoi)
             break
 
     return tournoi
