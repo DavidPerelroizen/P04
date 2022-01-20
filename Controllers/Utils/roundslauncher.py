@@ -1,7 +1,9 @@
 from Models.classclassement import Classement
+from Models.constants import yes_list, no_list
 from Views.classviews import View
 from Controllers.generatepairs import generatepairs
 from Controllers.roundmanager import roundmanager
+from Controllers.dbtournoi import serializetournoi
 
 
 def roundslauncher(tournoi):
@@ -35,4 +37,13 @@ def roundslauncher(tournoi):
         print("")
         view.displayroundresult(i, round_information)
         print("")
+
+        # Propose to save and postpone the rest of the tournament process
+        user_choice = ''
+        while user_choice not in yes_list and user_choice not in no_list:
+            user_choice = input('Save and continue later ---> Yes, Continue now --> No: ')
+        if user_choice in yes_list:
+            serializetournoi(tournoi)
+            break
+
     return tournoi
