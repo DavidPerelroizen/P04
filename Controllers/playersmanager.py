@@ -14,7 +14,7 @@ def gettheplayers(tournoi_name, players_number):
         print("")
 
         # The script below helps to collect the player's information, with input controls
-        player_index = tournoi_name + "_Player_" + str(i)
+        player_index = tournoi_name + "_PLAYER_" + str(i)
         print('Prepare to fill in information for ', player_index)
         player_last_name = input('Enter the player last name : ').upper()
         player_first_name = input('Enter the player first name : ').lower()

@@ -6,7 +6,7 @@ import datetime
 def tournoicreation():
     """This function initializes the creation of a tournament"""
 
-    tournoi_name = input('Enter the tournament name : ')
+    tournoi_name = input('Enter the tournament name : ').upper()
     tournoi_place = input('Enter the tournament location : ')
 
     #  Define the date with checks and controls

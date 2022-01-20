@@ -45,7 +45,7 @@ def specificplayerrankingupdate():
     player_index_for_update = ''
     while player_index_for_update == '':
         try:
-            player_index_for_update = input('Type the player index you are looking for: ')
+            player_index_for_update = input('Type the player index you are looking for: ').upper()
             player_search = Query()
             search_result = players_table.search(player_search.player_index == player_index_for_update)
             print(f'{player_index_for_update} current rank is ', {search_result[0]['rank']})
