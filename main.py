@@ -167,6 +167,20 @@ def main():
             user_option = input('Do you want to update another players rank? (Yes/No): ').upper()
         main()
 
+    elif user_choice == 'M':
+        """Complete an already created tournament for which some rounds have been played with the missing rounds"""
+        print("""
+        -----------------------------------------
+                    Complete an existing 
+            tournament with the missing rounds
+        -----------------------------------------""")
+        tournament_list = view.displaytournamentwithmissingroundslistsimplified()
+        if not tournament_list:
+            print('No tournament needs completion')
+            main()
+        else:
+            print('')
+        pass
     else:
         exit()
 
