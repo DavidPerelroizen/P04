@@ -23,7 +23,7 @@ def main():
         # Propose to save and postpone the rest of the tournament process
         user_choice = ''
         while user_choice not in yes_list and user_choice not in no_list:
-            user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
+            user_choice = input('Save and continue later ---> Yes, Continue now --> No: ')
         if user_choice in yes_list:
             serializetournoi(tournoi)
             main()
@@ -35,7 +35,7 @@ def main():
             # Propose to save and postpone the rest of the tournament process
             user_choice = ''
             while user_choice not in yes_list and user_choice not in no_list:
-                user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
+                user_choice = input('Save and continue later ---> Yes, Continue now --> No: ')
             if user_choice in yes_list:
                 serializetournoi(tournoi)
                 main()
@@ -74,7 +74,7 @@ def main():
             # Propose to save and postpone the rest of the tournament process
             user_choice = ''
             while user_choice not in yes_list and user_choice not in no_list:
-                user_choice = input('Do you want to save and continue the tournament creation later? (Yes/No): ')
+                user_choice = input('Save and continue later ---> Yes, Continue now --> No: ')
             if user_choice in yes_list:
                 serializetournoi(tournoi)
                 main()
