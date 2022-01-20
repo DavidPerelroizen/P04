@@ -82,7 +82,8 @@ def deserializetournoi():
 
     # The loop below allows to work directly on the only dictionary contained in the tournoi_dict list
     for element in tournoi_dict:
-        tournoi_deserialized = Tournoi(element['name'], element['place'], element['date_list'], element['rounds_list'],
+        tournoi_deserialized = Tournoi(element['name'], element['place'], element['date_list'][3: -3],
+                                       element['rounds_list'],
                                        element['description'], element['time_controller'],
                                        deserializeplayersdicos(element['players_list']),
                                        element['rounds_number'])
