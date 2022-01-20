@@ -29,7 +29,7 @@ def deserializeallplayers():
 
     for dico in deserialized_players:
         birth_date = dico['birth_date']
-        birth_date = birth_date[1: -2]  # Avoid over quoting of string
+        birth_date = birth_date[1: -1]  # Avoid over quoting of string
         player_info_list = [
                             dico['player_index'], dico['last_name'], dico['first_name'], birth_date,
                             dico['gender'], dico['rank'], dico['score']
