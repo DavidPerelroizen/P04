@@ -1,6 +1,5 @@
 from Views.classviews import View
 from Models.classclassement import Classement
-from Models.classtour import Tour
 from Controllers.roundmanager import roundmanager
 from Controllers.generatepairs import generatepairs
 from Controllers.tournoicreator import tournoicreation
@@ -176,7 +175,7 @@ def main():
         """Complete an already created tournament for which some rounds have been played with the missing rounds"""
         print("""
         -----------------------------------------
-                    Complete an existing 
+                    Complete an existing
             tournament with the missing rounds
         -----------------------------------------""")
         tournament_list = view.displaytournamentwithmissingroundslistsimplified()

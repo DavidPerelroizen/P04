@@ -32,7 +32,7 @@ main_menu_display = """
                 and rounds --> press C
             3. Complete a saved tournament with rounds
                 --> press S
-            4. Complete a saved tournament with the 
+            4. Complete a saved tournament with the
                 missing rounds --> M
             5. Reports --> press R
             6. Update player rank --> U
