@@ -1,8 +1,13 @@
 from Views.classviews import View
+from Models.classclassement import Classement
+from Models.classtour import Tour
+from Controllers.roundmanager import roundmanager
+from Controllers.generatepairs import generatepairs
 from Controllers.tournoicreator import tournoicreation
 from Models.constants import yes_list, no_list
 from Controllers.allplayersrankingupdate import specificplayerrankingupdate
-from Controllers.dbtournoi import serializetournoi, deserializetournoi, tournois_table
+from Controllers.dbtournoi import serializetournoi, deserializetournoi, tournois_table, deserializetournoiwithname,\
+    deserializerounds
 from Controllers.Utils.playerscreation import playerscreation
 from Controllers.Utils.roundslauncher import roundslauncher
 from Controllers.Utils.updaterankings import updaterankings
@@ -180,7 +185,58 @@ def main():
             main()
         else:
             print('')
-        pass
+            tournament_name_for_update = ''
+            while tournament_name_for_update not in tournament_list:
+                try:
+                    tournament_name_for_update = input('Please enter the name of the tournament to update: ')
+                except ValueError:
+                    print('Enter the tournament exact name.')
+
+            # Deserialize a tournoi to complete and removes the incomplete instance from the database
+            tournoi = deserializetournoiwithname(tournament_name_for_update)
+            tournoi_search = Query()
+            tournois_table.remove(tournoi_search.name == tournoi.name)
+
+            # Deserialize the rounds
+            rounds_list_deserialized = deserializerounds(tournoi)
+
+            # Inject the deserialized rounds list in the tournoi instance
+            tournoi.rounds_list = rounds_list_deserialized
+
+            #  Launch the rounds
+            classement = Classement()
+            rounds_pairs_list = []
+            for i in range(len(tournoi.rounds_list) + 1, tournoi.rounds_number + 1):
+                """
+                For each round, the program will follow the below steps:
+                1. Refresh the ranking
+                2. Generate a new set of pairs
+                3. Play the round
+                4. Add the round info to the tournoi
+                5. Add the round pairs list to the instance of the round
+                """
+
+                players_ranking = classement.ranking(tournoi.players_list)  # Step 1
+                pairs_list = generatepairs(players_ranking, rounds_pairs_list, i, len(tournoi.players_list))  # Step2
+                round_information = roundmanager(i, pairs_list)  # Step 3
+                tournoi.rounds_list.append(round_information)  # Step 4
+                rounds_pairs_list.append(pairs_list)  # Step 5
+                print("")
+                view.displayroundresult(i, round_information)
+                print("")
+
+                # Propose to save and postpone the rest of the tournament process
+                user_choice = ''
+                while user_choice not in yes_list and user_choice not in no_list:
+                    user_choice = input('Save and continue later ---> Yes, Continue now --> No: ')
+                if user_choice in yes_list:
+                    break
+
+            #  Update rankings
+            updaterankings(tournoi)
+            print("End of the game")
+            main()
+
     else:
         exit()
 
