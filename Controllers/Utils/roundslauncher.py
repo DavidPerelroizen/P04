@@ -35,4 +35,4 @@ def roundslauncher(tournoi):
         print("")
         view.displayroundresult(i, round_information)
         print("")
-        return tournoi
+    return tournoi
