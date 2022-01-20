@@ -230,3 +230,17 @@ class View:
                 tournament_list_names.append(tournament.name)
 
         return tournament_list_names
+
+    def displaytournamentwithmissingroundslistsimplified(self):
+        """This function displays a simplified list of the tournaments names in order to help the user"""
+        tournament_list = deserializealltournois()
+        tournament_list_names = []
+        print('')
+        print("""---Tournaments available---""")
+        for tournament in tournament_list:
+            if 0 < len(tournament.rounds_list) < tournament.rounds_number \
+                    and tournament.players_list != []:
+                print(f'{tournament.name}')
+                tournament_list_names.append(tournament.name)
+
+        return tournament_list_names
