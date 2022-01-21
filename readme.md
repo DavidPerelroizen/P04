@@ -71,21 +71,34 @@ python main.py
 From the main menu, select the desired function by pressing the appropriate key + enter
 ```bash
                 CHESS APPLICATOR
-            ----------------------------------
+            --------------------------------------------
                     MAIN MENU
-            ----------------------------------
+            --------------------------------------------
             1. Tournament manager --> press T
-            2. Reports --> press R
-            3. Update player rank --> U
-            4. Exit program --> press X
-            ----------------------------------
+            2. Complete a saved tournament with players
+                and rounds --> press C
+            3. Complete a saved tournament with rounds
+                --> press S
+            4. Complete a saved tournament with the
+                missing rounds --> M
+            5. Reports --> press R
+            6. Update player rank --> U
+            7. Exit program --> press X
+            --------------------------------------------
             Press the appropriate key + ENTER :
 ```
 Functions descriptions:
 1. ***Tournament manager*** : enables the user to create and play a tournament
-2. ***Reports*** : access to the reporting menu
-3. ***Update player rank*** : enables the user to update the ranking of a specific player directly in the database
-4. ***Exit program*** : stops the main program
+2. ***Complete a saved tournament with players and rounds*** : enables the user to get a tournament that was created
+    with minimal data (date, name, time controller, etc...) from the database and continue the process by adding the 
+    players and playing the rounds
+3. ***Complete a saved tournament with rounds*** : enables the user to get a tournament that was created with the 
+    players' data from the database and continue the process by playing the rounds
+4. ***Complete a saved tournament with the missing rounds*** : enables the user to get a tournament that was created 
+    with the players' data and some rounds from the database and continue the process by playing the missing rounds
+5. ***Reports*** : access to the reporting menu
+6. ***Update player rank*** : enables the user to update the ranking of a specific player directly in the database
+7. ***Exit program*** : stops the main program
 
 
 ### Reporting menu selection
