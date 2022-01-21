@@ -18,6 +18,7 @@ def tournoicreation():
         if tournoi_name in tournament_list_names:
             print('This tournament name is already used, try another.')
         tournoi_name = input('Enter the tournament name : ').upper()
+        ' '.join(tournoi_name.split())
 
     tournoi_place = input('Enter the tournament location : ')
 
