@@ -75,7 +75,7 @@ def deserializetournoi():
 
     while tournoi_dict == []:
         tournoi_name = input('Enter the tournament name: ').upper()
-        ' '.join(tournoi_name.split())
+        tournoi_name = ' '.join(tournoi_name.split())
         tournoi_search = Query()
         tournoi_dict = tournois_table.search(tournoi_search.name == tournoi_name)
 

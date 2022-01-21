@@ -188,7 +188,7 @@ def main():
             while tournament_name_for_update not in tournament_list:
                 try:
                     tournament_name_for_update = input('Please enter the name of the tournament to update: ').upper()
-                    ' '.join(tournament_name_for_update.split())
+                    tournament_name_for_update = ' '.join(tournament_name_for_update.split())
                 except ValueError:
                     print('Enter the tournament exact name.')
 
