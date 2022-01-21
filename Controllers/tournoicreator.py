@@ -1,12 +1,24 @@
 from Models.classtournoi import Tournoi
 from Models.constants import time_controllers_dict
+from Controllers.dbtournoi import deserializealltournois
 import datetime
 
 
 def tournoicreation():
     """This function initializes the creation of a tournament"""
+    # Retrieve all the existing tournament names
+    tournament_list = deserializealltournois()
+    tournament_list_names = []
+    for tournament in tournament_list:
+        tournament_list_names.append(tournament.name)
 
-    tournoi_name = input('Enter the tournament name : ').upper()
+    # Check if the input name already exists
+    tournoi_name = ''
+    while tournoi_name == '' or tournoi_name in tournament_list_names:
+        if tournoi_name in tournament_list_names:
+            print('This tournament name is already used, try another.')
+        tournoi_name = input('Enter the tournament name : ').upper()
+
     tournoi_place = input('Enter the tournament location : ')
 
     #  Define the date with checks and controls
